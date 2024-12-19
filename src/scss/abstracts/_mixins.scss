@@ -1,0 +1,47 @@
+// Media Query Mixins
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == xs {
+      @media (max-width: #{$breakpoint-xs}) { @content; }
+    } @else if $breakpoint == sm {
+      @media (max-width: #{$breakpoint-sm}) { @content; }
+    } @else if $breakpoint == md {
+      @media (max-width: #{$breakpoint-md}) { @content; }
+    } @else if $breakpoint == lg {
+      @media (max-width: #{$breakpoint-lg}) { @content; }
+    } @else if $breakpoint == xl {
+      @media (max-width: #{$breakpoint-xl}) { @content; }
+    }
+  }
+
+  // Flex Center
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  // Clearfix
+  @mixin clearfix {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  
+  // Text Truncate
+  @mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  // Transition
+  @mixin transition($property, $duration, $timing: ease) {
+    transition: $property $duration $timing;
+  }
+  
+  // Box Shadow
+  @mixin box-shadow($x, $y, $blur, $color) {
+    box-shadow: $x $y $blur $color;
+  }

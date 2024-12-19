@@ -1,0 +1,61 @@
+// _grid.scss
+
+// Grid Container
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat($grid-columns, 1fr);
+  gap: $grid-gutter;
+  width: 100%;
+  max-width: 1200px; // Optional for centered layouts
+  margin: 0 auto; // Center container
+  padding: 0 $grid-gutter; // Optional inner padding
+}
+
+// Grid Items
+.grid-item {
+  grid-column: span 1; // Default to 1 column span
+}
+
+// Responsive Column Spans
+@mixin grid-span($columns) {
+  grid-column: span $columns;
+}
+
+// Responsive Grid Layouts
+@mixin grid-responsive($breakpoint, $columns) {
+  @include respond-to($breakpoint) {
+    grid-column: span $columns;
+  }
+}
+
+// Example Classes for Column Spans
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+
+  @each $breakpoint, $value in $grid-breakpoints {
+    .col-#{$i}-#{$breakpoint} {
+      @include respond-to($breakpoint) {
+        grid-column: span $i;
+      }
+    }
+  }
+}
+
+// Alignment Utilities
+.grid-align-center {
+    align-items: center;
+  }
+  .grid-justify-center {
+    justify-items: center;
+  }
+  .grid-justify-start {
+    justify-items: start;
+  }
+  .grid-justify-end {
+    justify-items: end;
+  }
+  .grid-justify-space-between {
+    justify-content: space-between;
+  }
