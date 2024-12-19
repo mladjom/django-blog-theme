@@ -3,99 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Complete Grid System Testing" />
-    <title>Complete Grid Test</title>
+    <meta name="description" content="Breakpoint Test" />
+    <title>Breakpoint Test</title>
     <link rel="stylesheet" href="../dist/css/main.css" />
   </head>
   <body>
     <header class="grid-container">
       <div class="grid-item col-12">
-        <h1>Grid System: Comprehensive Test</h1>
-        <p>Resize the browser to test responsiveness, offsets, alignment, and other utilities.</p>
+        <h1>Breakpoint Testing</h1>
+        <p>Resize the browser to test how the grid and components adapt.</p>
       </div>
     </header>
 
-    <main>
-      <!-- Basic Grid Layout -->
-      <section class="grid-container">
-        <div class="grid-item col-12">
-          <h2>Basic Grid Layout</h2>
-        </div>
-        <div class="grid-item col-1">1</div>
-        <div class="grid-item col-2">2</div>
-        <div class="grid-item col-3">3</div>
-        <div class="grid-item col-4">4</div>
-        <div class="grid-item col-2">5</div>
-      </section>
-
-      <!-- Nested Grid -->
-      <section class="grid-container">
-        <div class="grid-item col-12">
-          <h2>Nested Grid</h2>
-        </div>
-        <div class="grid-item col-6">
-          <div class="grid-container">
-            <div class="grid-item col-6" style="background: #a1d6e2">Nested 1</div>
-            <div class="grid-item col-6" style="background: #1995ad">Nested 2</div>
-          </div>
-        </div>
-        <div class="grid-item col-6">
-          <div class="grid-container">
-            <div class="grid-item col-4" style="background: #a1d6e2">Nested 3</div>
-            <div class="grid-item col-8" style="background: #1995ad">Nested 4</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Offset Columns -->
-      <section class="grid-container">
-        <div class="grid-item col-12">
-          <h2>Offset Columns</h2>
-        </div>
-        <div class="grid-item col-4 col-offset-2" style="background: #85c7f2">Offset 2 Columns</div>
-        <div class="grid-item col-6 col-offset-3" style="background: #55a1db">Offset 3 Columns</div>
-      </section>
-
-      <!-- Full Height Grid -->
-      <section class="grid-container" style="min-height: 50vh; background: #f0f0f0;">
-        <div class="grid-item col-6" style="background: #5aa897">Full Height 1</div>
-        <div class="grid-item col-6" style="background: #31708e">Full Height 2</div>
-      </section>
-
-      <!-- Responsive Columns -->
-      <section class="grid-container">
-        <div class="grid-item col-12">
-          <h2>Responsive Columns</h2>
-        </div>
-        <div class="grid-item col-4 col-6-sm col-12-xs" style="background: #ffe066">Responsive 1</div>
-        <div class="grid-item col-8 col-6-sm col-12-xs" style="background: #ff9f1c">Responsive 2</div>
-      </section>
-
-      <!-- Alignment Utilities -->
-      <section class="grid-container grid-align-center grid-justify-center" style="height: 200px; background: #ffe0b5;">
-        <div class="grid-item col-3" style="background: #ff6f61">Centered Item</div>
-      </section>
-
-      <section class="grid-container grid-justify-space-between" style="height: 100px; background: #b5e0ff;">
-        <div class="grid-item col-3" style="background: #61a0ff">Start</div>
-        <div class="grid-item col-3" style="background: #357eff">Middle</div>
-        <div class="grid-item col-3" style="background: #004d99">End</div>
-      </section>
-
-      <!-- Asymmetric Grid -->
-      <section class="grid-container">
-        <div class="grid-item col-12">
-          <h2>Asymmetric Grid</h2>
-        </div>
-        <div class="grid-item col-3" style="background: #ffa3a3">1</div>
-        <div class="grid-item col-9" style="background: #ff6666">2</div>
-        <div class="grid-item col-4" style="background: #d4a5a5">3</div>
-        <div class="grid-item col-8" style="background: #b57373">4</div>
-      </section>
+    <main class="grid-container">
+      <div class="grid-item col-12">
+        <h2>Test Grid at Different Breakpoints</h2>
+      </div>
+    
+      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #42f542; padding: 10px; margin-bottom: 20px;">
+        <p>Item 1</p>
+      </div>
+      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #4287f5; padding: 10px; margin-bottom: 20px;">
+        <p>Item 2</p>
+      </div>
+      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #f54242; padding: 10px; margin-bottom: 20px;">
+        <p>Item 3</p>
+      </div>
+      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #f5a742; padding: 10px; margin-bottom: 20px;">
+        <p>Item 4</p>
+      </div>
+      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #42aaff; padding: 10px; margin-bottom: 20px;">
+        <p>Item 5</p>
+      </div>
     </main>
 
     <footer class="grid-container">
-      <p class="grid-item col-12">&copy; 2024 Grid System. All Rights Reserved.</p>
+      <p class="grid-item col-12" style="text-align: center;">&copy; 2024 Test Project</p>
     </footer>
   </body>
 </html>

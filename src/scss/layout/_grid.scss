@@ -1,15 +1,18 @@
-// _grid.scss
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 
 // Grid Container
 .grid-container {
   display: grid;
-  grid-template-columns: repeat($grid-columns, 1fr);
-  gap: $grid-gutter;
+  grid-template-columns: repeat(variables.$grid-columns, 1fr);
+  gap: variables.$grid-gutter;
   width: 100%;
   max-width: 1200px; // Optional for centered layouts
   margin: 0 auto; // Center container
-  padding: 0 $grid-gutter; // Optional inner padding
+  padding: 0 variables.$grid-gutter; // Optional inner padding
 }
+
 
 // Grid Items
 .grid-item {
@@ -23,20 +26,20 @@
 
 // Responsive Grid Layouts
 @mixin grid-responsive($breakpoint, $columns) {
-  @include respond-to($breakpoint) {
+  @include mixins.respond-to($breakpoint) {
     grid-column: span $columns;
   }
 }
 
 // Example Classes for Column Spans
-@for $i from 1 through $grid-columns {
+@for $i from 1 through variables.$grid-columns {
   .col-#{$i} {
     grid-column: span $i;
   }
 
-  @each $breakpoint, $value in $grid-breakpoints {
+  @each $breakpoint, $value in variables.$grid-breakpoints {
     .col-#{$i}-#{$breakpoint} {
-      @include respond-to($breakpoint) {
+      @include mixins.respond-to($breakpoint) {
         grid-column: span $i;
       }
     }

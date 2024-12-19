@@ -1,39 +1,40 @@
 // Abstracts
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'abstracts/functions';
-@import 'abstracts/utilities';
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+@use 'abstracts/functions' as *;
+@use 'abstracts/utilities' as *;
 
 // Base
-@import 'base/reset';
-@import 'base/typography';
-@import 'base/generic';
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/generic';
 
 // Components
-@import 'components/buttons';
-@import 'components/cards';
-@import 'components/forms';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
 
 // Layout
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/grid';
-@import 'layout/navigation';
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/grid';
+@use 'layout/navigation';
 
 // Pages
-@import 'pages/home';
-@import 'pages/about';
+@use 'pages/home';
+@use 'pages/about';
 
 // Themes
-@import 'themes/light';
-@import 'themes/dark';
+@use 'themes/light';
+@use 'themes/dark';  
 
 // Vendors
-@import 'vendors/third-party';
+@use 'vendors/third-party';
 
 footer {
     p {
-        text-align: center;
+        padding: $spacing-md $spacing-lg;
+        margin: 0;
     }
 }
   

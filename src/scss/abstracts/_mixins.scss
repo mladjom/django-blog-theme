@@ -1,15 +1,17 @@
+@use "variables";
+
 // Media Query Mixins
 @mixin respond-to($breakpoint) {
     @if $breakpoint == xs {
-      @media (max-width: #{$breakpoint-xs}) { @content; }
+      @media (max-width: #{variables.$breakpoint-xs}) { @content; }
     } @else if $breakpoint == sm {
-      @media (max-width: #{$breakpoint-sm}) { @content; }
+      @media (max-width: #{variables.$breakpoint-sm}) { @content; }
     } @else if $breakpoint == md {
-      @media (max-width: #{$breakpoint-md}) { @content; }
+      @media (max-width: #{variables.$breakpoint-md}) { @content; }
     } @else if $breakpoint == lg {
-      @media (max-width: #{$breakpoint-lg}) { @content; }
+      @media (max-width: #{variables.$breakpoint-lg}) { @content; }
     } @else if $breakpoint == xl {
-      @media (max-width: #{$breakpoint-xl}) { @content; }
+      @media (max-width: #{variables.$breakpoint-xl}) { @content; }
     }
   }
 

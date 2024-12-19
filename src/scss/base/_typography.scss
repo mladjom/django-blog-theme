@@ -1,84 +1,87 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 // _typography.scss
 
 // Headings
 h1, h2, h3, h4, h5, h6 {
-    font-family: $font-primary;
-    font-weight: $font-weight-bold;
-    line-height: $line-height-heading;
-    color: $text-color-dark;
-    margin-bottom: $spacing-sm;
+    font-family: variables.$font-primary;
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$line-height-heading;
+    color: variables.$text-color-dark;
+    margin-bottom: variables.$spacing-sm;
     margin-top: 0; // Avoid unnecessary top margin to reduce spacing conflicts
   }
   
-  h1 { font-size: $font-size-h1; }
-  h2 { font-size: $font-size-h2; }
-  h3 { font-size: $font-size-h3; }
-  h4 { font-size: $font-size-h4; }
-  h5 { font-size: $font-size-h5; }
-  h6 { font-size: $font-size-h6; }
+  h1 { font-size: variables.$font-size-h1; }
+  h2 { font-size: variables.$font-size-h2; }
+  h3 { font-size: variables.$font-size-h3; }
+  h4 { font-size: variables.$font-size-h4; }
+  h5 { font-size: variables.$font-size-h5; }
+  h6 { font-size: variables.$font-size-h6; }
   
   // Paragraphs
   p {
-    font-family: $font-primary;
-    font-weight: $font-weight-regular;
-    font-size: $font-size-base;
-    line-height: $line-height-default;
-    color: $text-color-dark;
-    margin-bottom: $spacing-md;
+    font-family: variables.$font-primary;
+    font-weight: variables.$font-weight-regular;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-default;
+    color: variables.$text-color-dark;
+    margin-bottom: variables.$spacing-md;
     margin-top: 0; // Minimal and predictable
   }
   
   // Links
   a {
-    color: $color-primary;
+    color: variables.$color-primary;
     text-decoration: none;
-    margin-bottom: $spacing-xs; // Ensure consistent spacing around links if used standalone
+    margin-bottom: variables.$spacing-xs; // Ensure consistent spacing around links if used standalone
   
     &:hover {
       text-decoration: underline;
-      color: $color-primary-dark;
+      color: variables.$color-primary-dark;
     }
   }
   
   // Lists
   ul, ol {
-    margin-left: $spacing-lg;
-    padding-left: $spacing-md;
-    font-size: $font-size-base;
-    line-height: $line-height-default;
-    color: $text-color-dark;
-    margin-bottom: $spacing-md;
+    margin-left: variables.$spacing-lg;
+    padding-left: variables.$spacing-md;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-default;
+    color: variables.$text-color-dark;
+    margin-bottom: variables.$spacing-md;
   
     li {
-      margin-bottom: $spacing-xs; // Space between list items
+      margin-bottom: variables.$spacing-xs; // Space between list items
     }
   }
   
   // Blockquotes
   blockquote {
-    font-family: $font-primary;
+    font-family: variables.$font-primary;
     font-style: italic;
-    font-weight: $font-weight-medium;
-    font-size: $font-size-large;
-    color: $text-color-dark;
-    margin: $spacing-xl 0;
-    padding-left: $spacing-md;
-    border-left: 4px solid $color-primary;
+    font-weight: variables.$font-weight-medium;
+    font-size: variables.$font-size-large;
+    color: variables.$text-color-dark;
+    margin: variables.$spacing-xl 0;
+    padding-left: variables.$spacing-md;
+    border-left: 4px solid variables.$color-primary;
   }
   
   // Utility Classes
-  .text-bold { font-weight: $font-weight-bold; }
+  .text-bold { font-weight: variables.$font-weight-bold; }
   .text-italic { font-style: italic; }
-  .text-small { font-size: $font-size-small; }
-  .text-large { font-size: $font-size-large; }
+  .text-small { font-size: variables.$font-size-small; }
+  .text-large { font-size: variables.$font-size-large; }
   .text-center { text-align: center; }
   .text-left { text-align: left; }
   .text-right { text-align: right; }
   
   // Responsive Adjustments
-  @include respond-to(sm) {
-    h1 { font-size: $font-size-h2; margin-bottom: $spacing-sm; }
-    h2 { font-size: $font-size-h3; }
-    p { font-size: $font-size-small; margin-bottom: $spacing-sm; }
+  @include mixins.respond-to(sm) {
+    h1 { font-size: variables.$font-size-h2; margin-bottom: variables.$spacing-sm; }
+    h2 { font-size: variables.$font-size-h3; }
+    p { font-size: variables.$font-size-small; margin-bottom: variables.$spacing-sm; }
   }
   
