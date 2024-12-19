@@ -1,0 +1,20 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+  "build:css": "sass src/scss/main.scss dist/css/main.css --style compressed",
+  "watch:css": "sass --watch src/scss/main.scss:dist/css/main.css",
+  "postcss": "postcss dist/css/main.css --use autoprefixer -o dist/css/main.css",
+  "purgecss": "purgecss --css dist/css/main.css --content src/**/*.html --output dist/css"
+},
+  "author": "mladjom",
+  "license": "ISC",
+  "dependencies": {
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-purgecss": "^5.0.0",
+    "sass": "^1.83.0"
+  }
+}
