@@ -1,4 +1,0 @@
-git add .
-git add -u
-git commit -m "Dev"
-git push 
