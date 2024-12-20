@@ -1,8 +1,8 @@
 // Abstracts
-@use 'abstracts/variables' as *;
-@use 'abstracts/mixins' as *;
-@use 'abstracts/functions' as *;
-@use 'abstracts/utilities' as *;
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+@use 'abstracts/functions';
+@use 'abstracts/utilities';
 
 // Base
 @use 'base/reset';
@@ -33,7 +33,7 @@
 
 footer {
     p {
-        padding: $spacing-md $spacing-lg;
+        padding: variables.$spacing-md variables.$spacing-lg;
         margin: 0;
     }
 }

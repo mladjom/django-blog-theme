@@ -8,30 +8,67 @@
     <link rel="stylesheet" href="../dist/css/main.css" />
     <style>
       /* Just for visualization */
-      .grid-item {
-          background: #e9ecef;
-          padding: 20px;
-          text-align: center;
-          margin-bottom: 10px;
+      header.grid-container {
+        margin-bottom: 10px;
       }
-  </style>
+      .grid-item {
+        background: #e9ecef;
+      }
+      footer.grid-container {
+        margin-top: 10px;
+      }
+    </style>
   </head>
   <body>
     <header class="grid-container">
-      <div class="grid-item col-12">
+      <div class="grid-item">
         <h1>Breakpoint Testing</h1>
         <p>Resize the browser to test how the grid and components adapt.</p>
       </div>
     </header>
 
+    <div class="grid-container gap-3">
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 1</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 2</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 3</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 4</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 5</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 6</div>
+    </div>
+
+    <div class="grid-container m-lg-5">
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 1</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 2</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 3</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 4</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 5</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 6</div>
+    </div>
+
+    <div class="grid-container gap-x-5 gap-y-5">
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 1</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 2</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 3</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 4</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 5</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 6</div>
+    </div>
+
     <div class="grid-container">
       <div class="grid-item col-sm-12 col-lg-6 col-4">Item 1</div>
       <div class="grid-item col-sm-12 col-lg-6 col-4">Item 2</div>
       <div class="grid-item col-sm-12 col-lg-6 col-4">Item 3</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 4</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 5</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 6</div>
     </div>
 
+
+
     <footer class="grid-container">
-      <p class="grid-item col-12" style="text-align: center;">&copy; 2024 Test Project</p>
+      <p class="grid-item col-12" style="text-align: center">
+        &copy; 2024 Test Project
+      </p>
     </footer>
   </body>
 </html>

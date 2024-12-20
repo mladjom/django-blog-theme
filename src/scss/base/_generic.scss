@@ -1,10 +1,14 @@
 // Utility Classes
-.grid-align-center {
-    align-items: center;
-  }
-  .grid-justify-center {
-    justify-items: center;
-  }
-  .grid-justify-space-between {
-    justify-content: space-between;
-  }
+// Alignment Utilities
+.align-center {
+  justify-items: center;
+  align-items: center;
+}
+.align-start {
+  justify-items: start;
+  align-items: start;
+}
+.align-end {
+  justify-items: end;
+  align-items: end;
+}

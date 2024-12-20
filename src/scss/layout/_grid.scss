@@ -1,12 +1,6 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
 
-// Responsive Media Query Mixin
-@mixin respond-to($breakpoint) {
-  @media (min-width: map.get($grid-breakpoints, $breakpoint)) {
-    @content;
-  }
-}
 
 // Grid Container
 .grid-container {
@@ -16,21 +10,16 @@
   width: 100%;
   max-width: 1200px; // Optional for centered layouts
   margin: 0 auto; // Center container
-  padding: 0 variables.$grid-gutter; // Optional inner padding
+  //padding: 0 variables.$grid-row-gutter; // Optional inner padding
 }
 
 
 // Grid Items 
 .grid-item {
-  grid-column: span 1; // Default to 1 column span
+  grid-column: span 12; // Default to 12 column span
 }
 
-// Responsive Column Spans
-@mixin grid-span($columns) {
-  grid-column: span $columns;
-}
-
-
+// Generate column utilities
 @for $i from 1 through variables.$grid-columns {
   .col-#{$i} {
     grid-column: span $i;
@@ -45,19 +34,17 @@
   }
 }
 
-// Alignment Utilities
-.grid-align-center {
-    align-items: center;
+// Generate gap utilities
+@each $size in variables.$gap-sizes {
+  .gap-x-#{$size} {
+    column-gap: $size * variables.$grid-gutter-base;
   }
-  .grid-justify-center {
-    justify-items: center;
+
+  .gap-y-#{$size} {
+    row-gap: $size * variables.$grid-gutter-base;
   }
-  .grid-justify-start {
-    justify-items: start;
+
+  .gap-#{$size} {
+    gap: $size * variables.$grid-gutter-base;
   }
-  .grid-justify-end {
-    justify-items: end;
-  }
-  .grid-justify-space-between {
-    justify-content: space-between;
-  }
+}

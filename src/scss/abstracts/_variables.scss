@@ -68,7 +68,11 @@ $spacing-xxl: 3rem;    // 48px
 
 // Grid Variables
 $grid-columns: 12;
-$grid-gutter: 1rem;
+$grid-gutter: 1rem; // Default gutter size
+$grid-row-gutter: 1rem; 
+
+$grid-gutter-base: 0.5rem; // Base gap size for scaling
+$gap-sizes: 0, 1, 2, 3, 4, 5; // Scale for gap utilities
 
 $grid-breakpoints: (
   sm: 576px,

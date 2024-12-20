@@ -1,5 +1,6 @@
 @use "variables";
 @use 'sass:map';
+
 // Media Query Mixin
 @mixin respond-to($breakpoint) {
   $size: map.get(variables.$grid-breakpoints, $breakpoint);
