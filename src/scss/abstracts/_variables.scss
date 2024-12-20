@@ -70,14 +70,6 @@ $spacing-xxl: 3rem;    // 48px
 $grid-columns: 12;
 $grid-gutter: 1rem;
 
-// Breakpoints
-$breakpoint-xs: 320px;  // Extra small
-$breakpoint-sm: 576px;  // Small
-$breakpoint-md: 768px;  // Medium
-$breakpoint-lg: 992px;  // Large
-$breakpoint-xl: 1200px; // Extra large
-
-// Define grid breakpoints for responsiveness
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,

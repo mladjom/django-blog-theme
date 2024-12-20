@@ -6,6 +6,15 @@
     <meta name="description" content="Breakpoint Test" />
     <title>Breakpoint Test</title>
     <link rel="stylesheet" href="../dist/css/main.css" />
+    <style>
+      /* Just for visualization */
+      .grid-item {
+          background: #e9ecef;
+          padding: 20px;
+          text-align: center;
+          margin-bottom: 10px;
+      }
+  </style>
   </head>
   <body>
     <header class="grid-container">
@@ -15,27 +24,11 @@
       </div>
     </header>
 
-    <main class="grid-container">
-      <div class="grid-item col-12">
-        <h2>Test Grid at Different Breakpoints</h2>
-      </div>
-    
-      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #42f542; padding: 10px; margin-bottom: 20px;">
-        <p>Item 1</p>
-      </div>
-      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #4287f5; padding: 10px; margin-bottom: 20px;">
-        <p>Item 2</p>
-      </div>
-      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #f54242; padding: 10px; margin-bottom: 20px;">
-        <p>Item 3</p>
-      </div>
-      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #f5a742; padding: 10px; margin-bottom: 20px;">
-        <p>Item 4</p>
-      </div>
-      <div class="grid-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" style="background-color: #42aaff; padding: 10px; margin-bottom: 20px;">
-        <p>Item 5</p>
-      </div>
-    </main>
+    <div class="grid-container">
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 1</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 2</div>
+      <div class="grid-item col-sm-12 col-lg-6 col-4">Item 3</div>
+    </div>
 
     <footer class="grid-container">
       <p class="grid-item col-12" style="text-align: center;">&copy; 2024 Test Project</p>

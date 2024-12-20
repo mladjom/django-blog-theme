@@ -1,6 +1,12 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
 
+// Responsive Media Query Mixin
+@mixin respond-to($breakpoint) {
+  @media (min-width: map.get($grid-breakpoints, $breakpoint)) {
+    @content;
+  }
+}
 
 // Grid Container
 .grid-container {
@@ -14,7 +20,7 @@
 }
 
 
-// Grid Items
+// Grid Items 
 .grid-item {
   grid-column: span 1; // Default to 1 column span
 }
@@ -24,21 +30,14 @@
   grid-column: span $columns;
 }
 
-// Responsive Grid Layouts
-@mixin grid-responsive($breakpoint, $columns) {
-  @include mixins.respond-to($breakpoint) {
-    grid-column: span $columns;
-  }
-}
 
-// Example Classes for Column Spans
 @for $i from 1 through variables.$grid-columns {
   .col-#{$i} {
     grid-column: span $i;
   }
-
+  
   @each $breakpoint, $value in variables.$grid-breakpoints {
-    .col-#{$i}-#{$breakpoint} {
+    .col-#{$breakpoint}-#{$i} {
       @include mixins.respond-to($breakpoint) {
         grid-column: span $i;
       }

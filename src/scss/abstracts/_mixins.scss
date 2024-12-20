@@ -1,19 +1,12 @@
 @use "variables";
-
-// Media Query Mixins
+@use 'sass:map';
+// Media Query Mixin
 @mixin respond-to($breakpoint) {
-    @if $breakpoint == xs {
-      @media (max-width: #{variables.$breakpoint-xs}) { @content; }
-    } @else if $breakpoint == sm {
-      @media (max-width: #{variables.$breakpoint-sm}) { @content; }
-    } @else if $breakpoint == md {
-      @media (max-width: #{variables.$breakpoint-md}) { @content; }
-    } @else if $breakpoint == lg {
-      @media (max-width: #{variables.$breakpoint-lg}) { @content; }
-    } @else if $breakpoint == xl {
-      @media (max-width: #{variables.$breakpoint-xl}) { @content; }
-    }
+  $size: map.get(variables.$grid-breakpoints, $breakpoint);
+  @media (max-width: #{$size}) { 
+    @content; 
   }
+}
 
   // Flex Center
 @mixin flex-center {
@@ -23,7 +16,7 @@
   }
   
   // Clearfix
-  @mixin clearfix {
+  @mixin clearfix { 
     &::after {
       content: "";
       display: table;
