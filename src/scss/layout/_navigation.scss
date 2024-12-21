@@ -16,6 +16,7 @@ $nav-hover-color: variables.$color-primary; // Hover and active link color
   color: $nav-text-color;
   padding: 0 map.get(variables.$spacing-scale, md);
 
+  
   .nav-brand {
     font-size: 1.5rem;
     font-weight: 700;
