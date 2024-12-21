@@ -33,7 +33,7 @@
 
 footer {
     p {
-        padding: variables.$spacing-md variables.$spacing-lg;
+        //padding: variables.$spacing-scale(md) variables.$spacing-scale(lg);
         margin: 0;
     }
 }

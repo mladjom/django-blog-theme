@@ -1,87 +1,85 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
-
-// _typography.scss
+@use 'sass:map';
 
 // Headings
 h1, h2, h3, h4, h5, h6 {
-    font-family: variables.$font-primary;
-    font-weight: variables.$font-weight-bold;
-    line-height: variables.$line-height-heading;
-    color: variables.$text-color-dark;
-    margin-bottom: variables.$spacing-sm;
-    margin-top: 0; // Avoid unnecessary top margin to reduce spacing conflicts
+  font-family: variables.$font-primary;
+  font-weight: variables.$font-weight-bold;
+  line-height: variables.$line-height-heading;
+  color: variables.$text-color-dark;
+  margin-bottom: map.get(variables.$spacing-scale, sm);
+  margin-top: 0; // Avoid unnecessary top margin to reduce spacing conflicts
+}
+
+h1 { font-size: variables.$font-size-h1; }
+h2 { font-size: variables.$font-size-h2; }
+h3 { font-size: variables.$font-size-h3; }
+h4 { font-size: variables.$font-size-h4; }
+h5 { font-size: variables.$font-size-h5; }
+h6 { font-size: variables.$font-size-h6; }
+
+// Paragraphs
+p {
+  font-family: variables.$font-primary; 
+  font-weight: variables.$font-weight-regular;
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-default;
+  color: variables.$text-color-dark;
+  margin-bottom: map.get(variables.$spacing-scale, md);
+  margin-top: 0; // Minimal and predictable
+}
+
+// Links
+a {
+  color: variables.$color-primary;
+  text-decoration: none;
+  margin-bottom: map.get(variables.$spacing-scale, xs); // Ensure consistent spacing around links if used standalone
+
+  &:hover {
+    text-decoration: underline;
+    color: variables.$color-primary-dark;
   }
-  
-  h1 { font-size: variables.$font-size-h1; }
-  h2 { font-size: variables.$font-size-h2; }
-  h3 { font-size: variables.$font-size-h3; }
-  h4 { font-size: variables.$font-size-h4; }
-  h5 { font-size: variables.$font-size-h5; }
-  h6 { font-size: variables.$font-size-h6; }
-  
-  // Paragraphs
-  p {
-    font-family: variables.$font-primary;
-    font-weight: variables.$font-weight-regular;
-    font-size: variables.$font-size-base;
-    line-height: variables.$line-height-default;
-    color: variables.$text-color-dark;
-    margin-bottom: variables.$spacing-md;
-    margin-top: 0; // Minimal and predictable
+}
+
+// Lists
+ul, ol {
+  margin-left: map.get(variables.$spacing-scale, lg);
+  padding-left: map.get(variables.$spacing-scale, md);
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-default;
+  color: variables.$text-color-dark;
+  margin-bottom: map.get(variables.$spacing-scale, lg);
+
+  li {
+    margin-bottom: map.get(variables.$spacing-scale, xs); // Space between list items
   }
-  
-  // Links
-  a {
-    color: variables.$color-primary;
-    text-decoration: none;
-    margin-bottom: variables.$spacing-xs; // Ensure consistent spacing around links if used standalone
-  
-    &:hover {
-      text-decoration: underline;
-      color: variables.$color-primary-dark;
-    }
-  }
-  
-  // Lists
-  ul, ol {
-    margin-left: variables.$spacing-lg;
-    padding-left: variables.$spacing-md;
-    font-size: variables.$font-size-base;
-    line-height: variables.$line-height-default;
-    color: variables.$text-color-dark;
-    margin-bottom: variables.$spacing-md;
-  
-    li {
-      margin-bottom: variables.$spacing-xs; // Space between list items
-    }
-  }
-  
-  // Blockquotes
-  blockquote {
-    font-family: variables.$font-primary;
-    font-style: italic;
-    font-weight: variables.$font-weight-medium;
-    font-size: variables.$font-size-large;
-    color: variables.$text-color-dark;
-    margin: variables.$spacing-xl 0;
-    padding-left: variables.$spacing-md;
-    border-left: 4px solid variables.$color-primary;
-  }
-  
-  // Utility Classes
-  .text-bold { font-weight: variables.$font-weight-bold; }
-  .text-italic { font-style: italic; }
-  .text-small { font-size: variables.$font-size-small; }
-  .text-large { font-size: variables.$font-size-large; }
-  .text-center { text-align: center; }
-  .text-left { text-align: left; }
-  .text-right { text-align: right; }
-  
-  // Responsive Adjustments
-  @include mixins.respond-to(sm) {
-    h1 { font-size: variables.$font-size-h2; margin-bottom: variables.$spacing-sm; }
-    h2 { font-size: variables.$font-size-h3; }
-    p { font-size: variables.$font-size-small; margin-bottom: variables.$spacing-sm; }
-  }
-  
+}
+
+// Blockquotes
+blockquote {
+  font-family: variables.$font-primary;
+  font-style: italic;
+  font-weight: variables.$font-weight-medium;
+  font-size: variables.$font-size-large;
+  color: variables.$text-color-dark;
+  margin: map.get(variables.$spacing-scale, xl) 0;
+  padding-left: map.get(variables.$spacing-scale, md);
+  border-left: 4px solid variables.$color-primary;
+}
+
+// Utility Classes
+.text-bold { font-weight: variables.$font-weight-bold; }
+.text-italic { font-style: italic; }
+.text-small { font-size: variables.$font-size-small; }
+.text-large { font-size: variables.$font-size-large; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+// Responsive Adjustments
+@include mixins.respond-to(sm) {
+  h1 { font-size: variables.$font-size-h2; margin-bottom: map.get(variables.$spacing-scale, sm); }
+  h2 { font-size: variables.$font-size-h3; }
+  p { font-size: variables.$font-size-small; margin-bottom: map.get(variables.$spacing-scale, sm); }
+}
