@@ -13,6 +13,10 @@
   //padding: 0 variables.$grid-row-gutter; // Optional inner padding
 }
 
+// Row Class
+.grid-row {
+  display: contents; // Allows rows to group without creating new block contexts
+}
 
 // Grid Items 
 .grid-item {
@@ -34,8 +38,9 @@
   }
 }
 
-// Generate gap utilities
+// Generate Gap Utilities
 @each $size in variables.$gap-sizes {
+  // Base gap classes
   .gap-x-#{$size} {
     column-gap: $size * variables.$grid-gutter-base;
   }
@@ -46,5 +51,26 @@
 
   .gap-#{$size} {
     gap: $size * variables.$grid-gutter-base;
+  }
+
+  // Responsive gap classes
+  @each $breakpoint, $min-width in variables.$grid-breakpoints {
+    .gap-#{$breakpoint}-#{$size} {
+      @include mixins.respond-to($breakpoint) {
+        gap: $size * variables.$grid-gutter-base;
+      }
+    }
+
+    .gap-x-#{$breakpoint}-#{$size} {
+      @include mixins.respond-to($breakpoint) {
+        column-gap: $size * variables.$grid-gutter-base;
+      }
+    }
+
+    .gap-y-#{$breakpoint}-#{$size} {
+      @include mixins.respond-to($breakpoint) {
+        row-gap: $size * variables.$grid-gutter-base;
+      }
+    }
   }
 }
