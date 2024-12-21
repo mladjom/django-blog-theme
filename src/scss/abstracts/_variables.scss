@@ -1,10 +1,10 @@
 // Primary Colors
-$color-primary: #1a73e8; // Example: Blue
+$color-primary: #ef2168; 
 $color-primary-light: #4a90e2;
 $color-primary-dark: #0c47b7;
 
 // Secondary Colors
-$color-secondary: #fbbc04; // Example: Yellow
+$color-secondary: #fbbc04; 
 $color-secondary-light: #fdd663;
 $color-secondary-dark: #c79100;
 
@@ -33,13 +33,14 @@ $text-color-dark: $color-black;
 
 
 // Font Families
-$font-primary: 'Inter', sans-serif;
+$font-primary: 'Satoshi', Arial, Helvetica, sans-serif;
 $font-monospace: 'Courier New', monospace;
 
 // Font Weights
-$font-weight-regular: 400;
+$font-weight-light: 300;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
+$font-weight-black: 900;
 
 // Line Heights
 $line-height-default: 1.6;

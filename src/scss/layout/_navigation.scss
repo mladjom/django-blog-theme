@@ -1,0 +1,129 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+@use "sass:map";
+
+$nav-height: 4rem; // Default height for nav bar
+$nav-bg: variables.$background-light; // Background color
+$nav-text-color: variables.$color-gray-900; // Default text color
+$nav-hover-color: variables.$color-primary; // Hover and active link color
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $nav-height;
+  background-color: $nav-bg;
+  color: $nav-text-color;
+  padding: 0 map.get(variables.$spacing-scale, md);
+
+  .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: $nav-hover-color;
+    }
+  }
+
+  .nav-toggler {
+    display: none; // Hidden by default
+
+    @include mixins.respond-to(md) {
+      display: block; // Visible on small screens
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .nav-item {
+      margin: 0 map.get(variables.$spacing-scale, sm);
+
+      .nav-link {
+        text-decoration: none;
+        color: inherit;
+        padding: map.get(variables.$spacing-scale, xs)
+          map.get(variables.$spacing-scale, sm);
+        border-radius: 4px;
+        font-weight: 700;
+
+        &:hover,
+        &.active {
+          color: $nav-hover-color;
+        }
+      }
+    }
+
+  }
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: variables.$background-light;
+  padding: map.get(variables.$spacing-scale, sm);
+  list-style: none;
+  border: 1px solid variables.$color-gray-300;
+  z-index: 1000;
+
+  &.show {
+    display: block; // Show dropdown when 'show' class is added
+  }
+  
+  .dropdown-link {
+    text-decoration: none;
+    color: variables.$color-gray-900;
+    padding: map.get(variables.$spacing-scale, xs) map.get(variables.$spacing-scale, sm);
+    display: block;
+
+    &:hover {
+      background-color: variables.$color-primary;
+      color: #fff;
+    }
+  }
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block; // Show dropdown on hover
+}
+
+// Responsive adjustments
+.nav-container {
+  @include mixins.respond-to(md) {
+    flex-wrap: wrap;
+
+    .nav-toggler {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-left: auto;
+
+      &:focus {
+        outline: 2px solid $nav-hover-color;
+      }
+    }
+
+    .nav-links {
+      display: none; // Hidden by default
+      flex-direction: column;
+      width: 100%;
+      padding: map.get(variables.$spacing-scale, sm) 0;
+
+      &.show {
+        display: flex;
+      }
+    }
+
+    .nav-item {
+      margin: map.get(variables.$spacing-scale, xs) 0;
+      text-align: center;
+    }
+  }
+}

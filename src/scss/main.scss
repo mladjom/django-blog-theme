@@ -32,8 +32,9 @@
 @use 'vendors/third-party';
 
 footer {
+    @extend .margin-top-xl;
+
     p {
-        //padding: variables.$spacing-scale(md) variables.$spacing-scale(lg);
         margin: 0;
     }
 }
