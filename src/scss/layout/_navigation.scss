@@ -2,10 +2,11 @@
 @use "../abstracts/mixins";
 @use "sass:map";
 
-$nav-height: 4rem; // Default height for nav bar
-$nav-bg: variables.$background-light; // Background color
-$nav-text-color: variables.$color-gray-900; // Default text color
-$nav-hover-color: variables.$color-primary; // Hover and active link color
+$nav-height: 4rem;
+$nav-bg: variables.$background-light;
+$nav-text-color: variables.$color-gray-900;
+$nav-hover-color: variables.$color-primary;
+$transition-speed: 0.3s;
 
 .nav-container {
   display: flex;
@@ -15,13 +16,15 @@ $nav-hover-color: variables.$color-primary; // Hover and active link color
   background-color: $nav-bg;
   color: $nav-text-color;
   padding: 0 map.get(variables.$spacing-scale, md);
+  position: relative;
 
-  
   .nav-brand {
     font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
     color: inherit;
+    z-index: 1001;
+    transition: color $transition-speed;
 
     &:hover {
       color: $nav-hover-color;
@@ -29,10 +32,22 @@ $nav-hover-color: variables.$color-primary; // Hover and active link color
   }
 
   .nav-toggler {
-    display: none; // Hidden by default
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: map.get(variables.$spacing-scale, xs);
+    color: inherit;
+    transition: color $transition-speed;
+
+    &:hover {
+      color: $nav-hover-color;
+    }
 
     @include mixins.respond-to(md) {
-      display: block; // Visible on small screens
+      display: block;
+      z-index: 1001;
     }
   }
 
@@ -41,90 +56,134 @@ $nav-hover-color: variables.$color-primary; // Hover and active link color
     list-style: none;
     margin: 0;
     padding: 0;
+    transition: transform $transition-speed ease;
 
     .nav-item {
       margin: 0 map.get(variables.$spacing-scale, sm);
+      position: relative;
 
-      .nav-link {
+      .nav-link,
+      .dropdown-toggle {
         text-decoration: none;
         color: inherit;
-        padding: map.get(variables.$spacing-scale, xs)
-          map.get(variables.$spacing-scale, sm);
+        padding: map.get(variables.$spacing-scale, xs) map.get(variables.$spacing-scale, sm);
         border-radius: 4px;
         font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: color $transition-speed;
 
         &:hover,
+        &:focus,
         &.active {
           color: $nav-hover-color;
         }
+
+        .dropdown-icon {
+          font-size: 0.8em;
+          transition: transform $transition-speed;
+        }
+
+        &[aria-expanded="true"] .dropdown-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      &.dropdown {
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          min-width: 200px;
+          background-color: $nav-bg;
+          padding: map.get(variables.$spacing-scale, sm);
+          list-style: none;
+          border: 1px solid variables.$color-gray-300;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all $transition-speed;
+
+          &.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+
+          .dropdown-link {
+            text-decoration: none;
+            color: inherit;
+            padding: map.get(variables.$spacing-scale, xs) map.get(variables.$spacing-scale, sm);
+            display: block;
+            border-radius: 2px;
+            transition: all $transition-speed;
+
+            &:hover {
+              background-color: variables.$color-primary;
+              color: #fff;
+            }
+          }
+        }
       }
     }
-
   }
-}
 
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: variables.$background-light;
-  padding: map.get(variables.$spacing-scale, sm);
-  list-style: none;
-  border: 1px solid variables.$color-gray-300;
-  z-index: 1000;
-
-  &.show {
-    display: block; // Show dropdown when 'show' class is added
-  }
-  
-  .dropdown-link {
-    text-decoration: none;
-    color: variables.$color-gray-900;
-    padding: map.get(variables.$spacing-scale, xs) map.get(variables.$spacing-scale, sm);
-    display: block;
-
-    &:hover {
-      background-color: variables.$color-primary;
-      color: #fff;
-    }
-  }
-}
-
-.nav-item.dropdown:hover .dropdown-menu {
-  display: block; // Show dropdown on hover
-}
-
-// Responsive adjustments
-.nav-container {
   @include mixins.respond-to(md) {
-    flex-wrap: wrap;
-
-    .nav-toggler {
-      display: block;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      margin-left: auto;
-
-      &:focus {
-        outline: 2px solid $nav-hover-color;
-      }
-    }
-
     .nav-links {
-      display: none; // Hidden by default
+      position: fixed;
+      top: $nav-height;
+      left: 0;
+      right: 0;
+      background-color: $nav-bg;
       flex-direction: column;
-      width: 100%;
-      padding: map.get(variables.$spacing-scale, sm) 0;
-
+      padding: map.get(variables.$spacing-scale, md);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      
       &.show {
-        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
       }
-    }
 
-    .nav-item {
-      margin: map.get(variables.$spacing-scale, xs) 0;
-      text-align: center;
+      .nav-item {
+        margin: map.get(variables.$spacing-scale, xs) 0;
+        width: 100%;
+        text-align: left;
+
+        &.dropdown .dropdown-menu {
+          position: static;
+            display: none;
+            width: 100%;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            border: none;
+            padding-left: map.get(variables.$spacing-scale, md);
+            box-shadow: none;
+          
+          &.show {
+            display: block;
+          }
+          .dropdown-link {
+            &:hover,
+            &:focus {
+              background-color: $nav-hover-color;
+              color: #fff;
+            }
+          }
+
+        }
+      }
     }
   }
 }
