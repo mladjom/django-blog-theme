@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Test</title>
+    <link href="../dist/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+        <a href="#" class="nav-brand">Brand</a>
+        <button class="nav-toggler" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">About</a>
+            </li>
+            <li class="nav-item dropdown">
+                <button class="nav-link dropdown-toggle">
+                    Services
+                    <span class="dropdown-icon">▼</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-link">Web Design</a></li>
+                    <li><a href="#" class="dropdown-link">SEO</a></li>
+                    <li><a href="#" class="dropdown-link">Content Writing</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+
+    <div class="grid grid--2-cols grid--gap-lg">
+      <div>Content</div>
+      <div>Content</div>
+    </div>
+</div>
+    <!-- Hero Section -->
+    <header class="content-section content-section--lg">
+        <div class="container">
+            <h1>Design System Test Page</h1>
+            <p class="lead">Testing typography, spacing, grid, and navigation systems</p>
+        </div>
+    </header>
+
+    <!-- Typography Section -->
+    <section class="content-section">
+        <div class="container">
+           
+            <h2>Typography Test</h2>
+            <div class="grid grid--2-cols">
+                <div>
+                    <h3>Headings</h3>
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+                </div>
+                <div>
+                    <h3>Text Elements</h3>
+                    <p>Regular paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
+                    <p class="lead">Lead paragraph text.</p>
+                    <small>Small text example</small>
+                    <blockquote>
+                        This is a blockquote example with our brand color accent.
+                    </blockquote>
+                    <p>A paragraph with a <a href="#">link example</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid Section -->
+    <section class="content-section content-section--sm">
+        <div class="container">
+            <h2>Grid System Test</h2>
+            
+            <h3>Two Columns</h3>
+            <div class="grid grid--2-cols">
+                <div class="card">Column 1</div>
+                <div class="card">Column 2</div>
+            </div>
+
+            <h3>Three Columns</h3>
+            <div class="grid grid--3-cols">
+                <div class="card">Column 1</div>
+                <div class="card">Column 2</div>
+                <div class="card">Column 3</div>
+            </div>
+
+            <h3>Auto-fit Grid</h3>
+            <div class="grid grid--auto-fit">
+                <div class="card">Card 1</div>
+                <div class="card">Card 2</div>
+                <div class="card">Card 3</div>
+                <div class="card">Card 4</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Layout Patterns</h2>
+            
+            <h3>Sidebar Layout</h3>
+            <div class="layout--sidebar">
+                <main class="card">Main Content Area</main>
+                <aside class="card">Sidebar Area</aside>
+            </div>
+
+            <h3>Featured Layout</h3>
+            <div class="layout--featured">
+                <div class="card">Featured Content</div>
+                <div class="card">Secondary Content</div>
+            </div>s
+        </div>
+    </section>
+
+    <!-- Colors Section -->
+    <section class="content-section content-section--sm">
+        <div class="container">
+            <h2>Color System</h2>
+            <div class="grid grid--auto-fit">
+                <div class="card">
+                    <h4 class="text-primary">Primary Text</h4>
+                    <p class="text-secondary">Secondary Text</p>
+                    <p class="text-tertiary">Tertiary Text</p>
+                    <p class="text-disabled">Disabled Text</p>
+                </div>
+                <div class="card">
+                    <h4>Brand Colors</h4>
+                    <p class="text-brand">Brand Color Text</p>
+                    <p class="text-emphasis">Emphasized Text</p>
+                </div>
+                <div class="card">
+                    <h4>Status Colors</h4>
+                    <p class="text-success">Success Message</p>
+                    <p class="text-error">Error Message</p>
+                    <p class="text-warning">Warning Message</p>
+                    <p class="text-info">Info Message</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../public/js/main.js" defer></script>
+
+    </body>
+</html>

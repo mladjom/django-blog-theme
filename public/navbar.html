@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../dist/css/main.css" />
   </head>
   <body>
-    <header class="">
+   <header class="">
       <nav class="nav-container">
         <a href="#" class="nav-brand">Brand</a>
         <button class="nav-toggler" aria-label="Toggle navigation" aria-expanded="false">☰</button>
@@ -42,7 +42,102 @@
     </header>
     <main class="grid-container">
         <div class="grid-item">
-
+          <main>
+            <section>
+                <h2>Headings</h2>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
+            </section>
+    
+            <section>
+                <h2>Paragraphs & Inline Elements</h2>
+                <p>This is a normal paragraph. <strong>This text is bold.</strong> <em>This text is italicized.</em> <u>This text is underlined.</u> <mark>This text is highlighted.</mark> <a href="#">This is a link.</a></p>
+                <p>This is a <code>code</code> element inside a paragraph. Here's a <abbr title="HyperText Markup Language">HTML</abbr> abbreviation and a <samp>sample output.</samp></p>
+                <blockquote>This is a blockquote. It’s used for long quotes or cited content.</blockquote>
+            </section>
+    
+            <section>
+                <h2>Lists</h2>
+                <ul>
+                    <li>Unordered List Item 1</li>
+                    <li>Unordered List Item 2
+                        <ul>
+                            <li>Nested Item 1</li>
+                            <li>Nested Item 2</li>
+                        </ul>
+                    </li>
+                    <li>Unordered List Item 3</li>
+                </ul>
+                <ol>
+                    <li>Ordered List Item 1</li>
+                    <li>Ordered List Item 2</li>
+                    <li>Ordered List Item 3</li>
+                </ol>
+            </section>
+    
+            <section>
+                <h2>Code Blocks</h2>
+                <pre><code>body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+    }</code></pre>
+            </section>
+    
+            <section>
+                <h2>Tables</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column 1</th>
+                            <th>Column 2</th>
+                            <th>Column 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1, Cell 1</td>
+                            <td>Row 1, Cell 2</td>
+                            <td>Row 1, Cell 3</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2, Cell 1</td>
+                            <td>Row 2, Cell 2</td>
+                            <td>Row 2, Cell 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+    
+            <section>
+                <h2>Forms</h2>
+                <form>
+                    <label for="text">Text Input:</label>
+                    <input type="text" id="text" name="text">
+    
+                    <label for="textarea">Textarea:</label>
+                    <textarea id="textarea" name="textarea"></textarea>
+    
+                    <label for="select">Select:</label>
+                    <select id="select" name="select">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+    
+                    <label for="checkbox">Checkbox:</label>
+                    <input type="checkbox" id="checkbox" name="checkbox">
+    
+                    <label for="radio">Radio Button:</label>
+                    <input type="radio" id="radio" name="radio">
+    
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </main>
       <h1 class="font-black">This is a headline</h1>
       <p class="font-light">This is body text with a light font weight.</p>
         </div>

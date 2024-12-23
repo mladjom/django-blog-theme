@@ -1,76 +1,92 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use "../abstracts/mixins"as *;
+@use "../abstracts/variables"as *;
+@use 'sass:map';
 
+// Container
+.container {
+  width: min(100% - 2rem, 75rem);
+  margin-inline: auto;
+}
 
-// Grid Container
-.grid-container {
+// Modern Grid System
+.grid {
   display: grid;
-  grid-template-columns: repeat(variables.$grid-columns, 1fr);
-  gap: variables.$grid-gutter;
-  width: 100%;
-  max-width: 1200px; // Optional for centered layouts
-  margin: 0 auto; // Center container
-  //padding: 0 variables.$grid-row-gutter; // Optional inner padding
-}
-
-// Row Class
-.grid-row {
-  display: contents; // Allows rows to group without creating new block contexts
-}
-
-// Grid Items 
-.grid-item {
-  grid-column: span 12; // Default to 12 column span
-}
-
-// Generate column utilities
-@for $i from 1 through variables.$grid-columns {
-  .col-#{$i} {
-    grid-column: span $i;
+  gap: map.get($spacing, 'md');
+  
+  // Basic column variants
+  &--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @include breakpoint('md') {
+      grid-template-columns: 1fr;
+    }
   }
   
-  @each $breakpoint, $value in variables.$grid-breakpoints {
-    .col-#{$breakpoint}-#{$i} {
-      @include mixins.respond-to($breakpoint) {
-        grid-column: span $i;
-      }
+  &--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @include breakpoint('lg') {
+      grid-template-columns: repeat(2, 1fr);
     }
+    
+    @include breakpoint('md') {
+      grid-template-columns: 1fr;
+    } 
+  }
+  
+  &--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+    
+    @include breakpoint('lg') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include breakpoint('md') {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  // Auto-fit grid with better responsiveness
+  &--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+  
+  // Gap variations
+  &--gap-sm {
+    gap: map.get($spacing, 'sm');
+  }
+  
+  &--gap-lg {
+    gap: map.get($spacing, 'lg');
   }
 }
 
-// Generate Gap Utilities
-@each $size in variables.$gap-sizes {
-  // Base gap classes
-  .gap-x-#{$size} {
-    column-gap: $size * variables.$grid-gutter-base;
-  }
-
-  .gap-y-#{$size} {
-    row-gap: $size * variables.$grid-gutter-base;
-  }
-
-  .gap-#{$size} {
-    gap: $size * variables.$grid-gutter-base;
-  }
-
-  // Responsive gap classes
-  @each $breakpoint, $min-width in variables.$grid-breakpoints {
-    .gap-#{$breakpoint}-#{$size} {
-      @include mixins.respond-to($breakpoint) {
-        gap: $size * variables.$grid-gutter-base;
-      }
+// Layout patterns with improved responsiveness
+.layout {
+  display: grid;
+  gap: map.get($spacing, 'md');
+  
+  &--sidebar {
+    grid-template-columns: 3fr 1fr;
+    
+    @include breakpoint('lg') {
+      grid-template-columns: 1fr;
     }
-
-    .gap-x-#{$breakpoint}-#{$size} {
-      @include mixins.respond-to($breakpoint) {
-        column-gap: $size * variables.$grid-gutter-base;
-      }
+  }
+  
+  &--equal {
+    grid-template-columns: 1fr 1fr;
+    
+    @include breakpoint('md') {
+      grid-template-columns: 1fr;
     }
-
-    .gap-y-#{$breakpoint}-#{$size} {
-      @include mixins.respond-to($breakpoint) {
-        row-gap: $size * variables.$grid-gutter-base;
-      }
+  }
+  
+  &--featured {
+    grid-template-columns: 2fr 1fr;
+    
+    @include breakpoint('md') {
+      grid-template-columns: 1fr;
     }
   }
 }

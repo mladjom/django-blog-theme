@@ -19,7 +19,7 @@
 @use 'layout/footer';
 @use 'layout/grid';
 @use 'layout/navigation';
-
+ 
 // Pages
 @use 'pages/home';
 @use 'pages/about';
@@ -32,10 +32,9 @@
 @use 'vendors/third-party';
 
 footer {
-    @extend .margin-top-xl;
 
     p {
-        margin: 0;
+        margin: space-lg;
     }
 }
   

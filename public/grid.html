@@ -18,12 +18,72 @@
         margin-top: 10px;
       }
     </style>
+        <style>
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          
+          table, th, td {
+            border: 1px solid black;
+          }
+          
+          th, td {
+            padding: 15px;
+            text-align: left;
+          }
+          
+          th {
+            background-color: #f2f2f2;
+          }
+          
+          tr:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+          </style>
   </head>
   <body>
         
     <div class="grid-container gap-3 m-bottom-xxl">
       <!-- Default Row -->
       <div class="grid-row">
+        <table>
+          <tr>
+            <th>Месец</th>
+            <th>Боравили дана</th>
+            <th>Потрошња (kWh)</th>
+          </tr>
+          <tr>
+            <td>Јун</td>
+            <td>13</td>
+            <td>87</td>
+          </tr>
+          <tr>
+            <td>Јул</td>
+            <td>31</td>
+            <td>142</td>
+          </tr>
+          <tr>
+            <td>Август</td>
+            <td>15</td>
+            <td>101</td>
+          </tr>
+          <tr>
+            <td>Септембар</td>
+            <td>0</td>
+            <td>27</td>
+          </tr>
+          <tr>
+            <td>Октобар</td>
+            <td>0</td>
+            <td>21</td>
+          </tr>
+          <tr>
+            <td>Новембар</td>
+            <td>0</td>
+            <td>350</td>
+          </tr>
+        </table>
         <div class="grid-item col-4">Item 1</div>
         <div class="grid-item col-4">Item 2</div>
         <div class="grid-item col-4">Item 3</div>
