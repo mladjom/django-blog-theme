@@ -50,8 +50,8 @@ src/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/template-project.git
-   cd template-project
+   git clone https://github.com/mladjom/template.git
+   cd template
    ```
 
 2. Install the dependencies:
