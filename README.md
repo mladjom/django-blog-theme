@@ -1,104 +1,142 @@
-# Template Project
+# Django Blog Theme
 
-This is a template project for building an HTML site with SCSS.
+This directory contains the theme assets (SCSS and JavaScript) for the Django blog project. It uses modern tooling to compile, optimize, and manage frontend assets.
 
-## Project Structure
-
+## 📁 Directory Structure
 ```
-.gitignore
-index.html
-package.json
-README.md
-src/
-    scss/
-        abstracts/
-            _functions.scss
-            _mixins.scss
-            _variables.scss
-        base/
-            _generic.scss
-            _reset.scss
-            _typography.scss
-        components/
-            _buttons.scss
-            _cards.scss
-            _forms.scss
-        layout/
-            _footer.scss
-            _grid.scss
-            _header.scss
-            _navigation.scss
-        main.scss
-        pages/
-            _about.scss
-            _home.scss
-        themes/
-            _dark.scss
-            _light.scss
-        vendors/
-            _third-party.scss
+theme/
+├── src/
+│   ├── scss/
+│   │   ├── abstracts/         # Variables, mixins, functions
+│   │   ├── base/             # Reset, typography, base styles
+│   │   ├── components/       # Buttons, forms, cards
+│   │   ├── layout/          # Grid, header, footer, nav
+│   │   ├── pages/           # Page-specific styles
+│   │   ├── themes/          # Light/dark theme variations
+│   │   ├── vendors/         # Third-party styles
+│   │   └── main.scss        # Main SCSS entry
+│   └── js/
+│       └── main.js          # JavaScript entry point
+├── package.json             # Dependencies and scripts
+├── postcss.config.js        # PostCSS configuration
+└── README.md               # This file
 ```
 
-## Getting Started
+## 🚀 Quick Start
 
-### Prerequisites
-
-- Node.js
-- npm (Node Package Manager)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/mladjom/template.git
-   cd template
-   ```
-
-2. Install the dependencies:
-   ```bash
-   npm install
-   ```
-
-### Usage
-
-#### Building CSS
-
-To build the CSS from the SCSS source files, run:
+1. Install dependencies:
 ```bash
-npm run build:css
+npm install
 ```
 
-#### Watching for Changes
-
-To watch for changes in the SCSS files and automatically build the CSS, run:
+2. Start development:
 ```bash
-npm run watch:css
+npm run watch
 ```
 
-#### Post-processing CSS
-
-To run PostCSS with autoprefixer on the built CSS file, run:
+3. Build for production:
 ```bash
-npm run postcss
+npm run build
 ```
 
-#### Purging Unused CSS
+## 📜 Available Commands
 
-To remove unused CSS from the final build, run:
-```bash
-npm run purgecss
-```
+- `npm run css:dev` - Watch and compile SCSS with source maps
+- `npm run css:build` - Compile and optimize CSS for production
+- `npm run js:dev` - Watch and bundle JS with source maps
+- `npm run js:build` - Bundle and minify JS for production
+- `npm run watch` - Run both CSS and JS development watchers
+- `npm run build` - Build both CSS and JS for production
+- `npm run clean` - Clean output directories
 
-### Project Structure
+## 🛠️ Technologies Used
 
-- `src/scss/abstracts`: Contains SCSS functions, mixins, and variables.
-- `src/scss/base`: Contains base styles such as resets and typography.
-- `src/scss/components`: Contains styles for individual components like buttons, cards, and forms.
-- `src/scss/layout`: Contains layout-related styles such as grid, header, footer, and navigation.
-- `src/scss/pages`: Contains styles specific to individual pages.
-- `src/scss/themes`: Contains theme-related styles.
-- `src/scss/vendors`: Contains styles from third-party libraries.
+- **SASS** - CSS preprocessor
+- **PostCSS** - CSS postprocessor with features:
+  - Autoprefixer
+  - CSS Nesting
+  - Media Query Optimization
+  - CSS Minification
+  - Custom Properties Support
+- **esbuild** - JavaScript bundler and minifier
 
-### License
+## 📝 Development Guidelines
 
-This project is licensed under the ISC License.
+### SCSS Structure
+- Use the 7-1 pattern for SCSS organization
+- Follow BEM methodology for class naming
+- Keep components modular and reusable
+- Use variables from `abstracts/_variables.scss`
+- Implement mixins for repeated patterns
+
+### JavaScript Structure
+- Write modular JavaScript
+- Use ES6+ features
+- Keep functions pure when possible
+- Comment complex logic
+- Handle errors appropriately
+
+## 🎨 Theming
+
+The theme supports both light and dark modes:
+- Light theme is the default
+- Dark theme is triggered by `.dark-mode` class on `<html>`
+- Theme variables are in `themes/_light.scss` and `themes/_dark.scss`
+
+## 💻 Browser Support
+
+Supports modern browsers as defined in `browserslist`:
+- Latest Chrome, Firefox, Safari, Edge
+- No IE11 support
+- Mobile browsers
+
+## 🔧 Customization
+
+### Adding New SCSS Files
+1. Create file in appropriate directory
+2. Import in `main.scss`
+3. Follow existing patterns
+
+### Adding New JavaScript
+1. Create modules in `src/js/`
+2. Import in `main.js`
+3. Use ES6 module syntax
+
+## 📦 Build Output
+
+Compiled assets are output to:
+- CSS: `../static/css/main.css`
+- JavaScript: `../static/js/main.js`
+
+## ⚠️ Troubleshooting
+
+Common issues and solutions:
+
+1. **SCSS compilation errors**
+   - Check syntax
+   - Verify import paths
+   - Check variable scope
+
+2. **JavaScript bundling issues**
+   - Verify module imports
+   - Check for syntax errors
+   - Ensure dependencies are installed
+
+3. **Source maps not working**
+   - Verify dev server configuration
+   - Check browser developer tools settings
+
+## 🤝 Contributing
+
+1. Follow existing code style
+2. Document changes
+3. Test in development
+4. Build before committing
+
+## 📃 License
+
+[License Type] - See LICENSE file for details
+
+---
+
+For more information about the Django project structure, see the main README.md in the project root.

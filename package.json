@@ -1,20 +1,36 @@
 {
-  "name": "template",
+  "name": "django-blog-theme",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-"scripts": {
-  "build:css": "sass src/scss/main.scss dist/css/main.css --style compressed",
-  "watch:css": "sass --watch src/scss/main.scss:dist/css/main.css",
-  "postcss": "postcss dist/css/main.css --use autoprefixer -o dist/css/main.css",
-  "purgecss": "purgecss --css dist/css/main.css --content src/**/*.html --output dist/css"
-},
-  "author": "mladjom",
-  "license": "ISC",
+  "description": "Theme processing for Django blog",
+  "scripts": {
+    "css:dev": "sass src/scss/main.scss:../static/css/main.css --source-map --watch",
+    "css:build": "sass src/scss/main.scss:../static/css/main.css --style=compressed && postcss ../static/css/main.css --replace",
+    "js:dev": "esbuild src/js/main.js --bundle --outfile=../static/js/main.js --sourcemap --watch",
+    "js:build": "esbuild src/js/main.js --bundle --minify --outfile=../static/js/main.js",
+    "watch": "npm-run-all --parallel css:dev js:dev",
+    "build": "npm-run-all --sequential css:build js:build",
+    "clean": "rimraf ../static/css/* ../static/js/*"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "dependencies": {
-    "postcss": "^8.4.49",
-    "postcss-cli": "^11.0.0",
-    "postcss-purgecss": "^5.0.0",
-    "sass": "^1.83.0" 
+    "@popperjs/core": "^2.11.8"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.2",
+    "esbuild": "^0.19.5",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "postcss-combine-media-query": "^1.0.1",
+    "postcss-import": "^15.1.0",
+    "postcss-preset-env": "^9.3.0",
+    "postcss-sort-media-queries": "^5.2.0",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5"
   }
 }
