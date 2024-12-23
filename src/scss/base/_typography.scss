@@ -17,13 +17,8 @@ body {
 // Headings
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: $font-family-heading;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-tight;
-  letter-spacing: $letter-spacing-tight;
+  @include heading-base;
   color: $color-text-primary;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
 }
 
 // Headings

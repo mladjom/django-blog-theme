@@ -1,28 +1,2 @@
 @use "variables"as *;
 @use "mixins"as *;
-
-// // Mixin for Generating Spacing Utilities
-// @mixin spacing-utilities($type, $property) {
-//   @each $key, $value in $spacing-scale {
-//     .#{$type}-#{$property}-#{$key} {
-//       #{$type}-#{$property}: #{$value};
-//     }
-//   }
-
-//   // Responsive Variants
-//   @each $breakpoint, $bp-value in $grid-breakpoints {
-//     @include respond-to($breakpoint) {
-//       @each $key, $value in $spacing-scale {
-//         .#{$type}-#{$property}-#{$breakpoint}-#{$key} { 
-//           #{$type}-#{$property}: #{$value};
-//         }
-//       }
-//     }
-//   }
-// }
-
-// // Generate Margin and Padding Utilities
-// @each $property in (top, right, bottom, left) {
-//   @include spacing-utilities("margin", $property); // Margin utilities
-//   @include spacing-utilities("padding", $property); // Padding utilities
-// }

@@ -3,7 +3,7 @@
 @use "../abstracts/mixins" as *;
 
 // Navigation variables
-$nav-height: 4rem;
+$nav-height: 5rem;
 $nav-bg: $color-background-secondary;
 $nav-text-color: $color-text-primary;
 $nav-hover-color: $color-link;
@@ -62,7 +62,7 @@ $dropdown-z-index: 1000;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: $space-md;
+    gap: $space-xs;
     transition: transform $transition-speed ease;
 
     .nav-item {

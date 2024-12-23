@@ -13,18 +13,7 @@
   }
 }
 
-
-
-
-
-// Media Query Mixin
-// @mixin respond-to($breakpoint) {
-//   $size: map.get($grid-breakpoints, $breakpoint);
-//   @media (max-width: #{$size}) { 
-//     @content; 
-//   }
-// }
-
+// Aspect ratio mixin
 // Fluid Typography
 @mixin fluid-type($min-size, $max-size, $min-vw: 320px, $max-vw: 1200px) {
   font-size: clamp(#{$min-size}, 
