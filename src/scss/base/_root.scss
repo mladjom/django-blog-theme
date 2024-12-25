@@ -1,0 +1,32 @@
+@use "../abstracts/variables" as *; 
+@use "../abstracts/mixins" as *;
+
+:root {
+  // Theme colors that might change
+  @include generate-color-variants(#000000, 'color-neutral');  
+  // Text colors
+  --color-text-primary: #{$color-neutral-900};
+  --color-text-secondary: #{$color-neutral-600};
+  --color-text-tertiary: #{$color-neutral-500};
+  
+  // Background colors
+  --color-background-primary: #{$color-neutral-100};
+  --color-background-secondary: #{$color-neutral-200};
+  --color-background-tertiary: #{$color-neutral-300};
+  
+  // Border colors
+  --color-border-light: #{$color-neutral-300};
+  --color-border-default: #{$color-neutral-400};
+  --color-border-dark: #{$color-neutral-500};
+  
+  // Link colors
+  --color-link: #{$color-brand-primary};
+  --color-link-hover: #{$color-brand-primary-dark};
+  
+  // Inverse colors
+  --color-inverse-text: #{$color-neutral-100};
+  --color-inverse-background: #{$color-brand-primary};
+  
+  // Shadow color
+  --shadow-color: #{$color-shadow}; 
+}

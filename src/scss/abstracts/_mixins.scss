@@ -1,6 +1,12 @@
-@use "../abstracts/variables"as *;
+@use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 @use 'sass:map';
+@use "sass:math";
+@use "sass:color";
+
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
 
 // Modern mixin for media queries
 @mixin breakpoint($size) {
@@ -11,33 +17,6 @@
   } @else {
     @warn "Unknown breakpoint: #{$size}";
   }
-}
-
-// Aspect ratio mixin
-// Fluid Typography
-@mixin fluid-type($min-size, $max-size, $min-vw: 320px, $max-vw: 1200px) {
-  font-size: clamp(#{$min-size}, 
-    calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * 
-    ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})), 
-    #{$max-size});
-}
-
-// Heading styles
-@mixin heading-base {
-  font-family: $font-family-heading;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-tight;
-  letter-spacing: $letter-spacing-tight;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-// Generate Color Transparency Variants
-@mixin generate-color-variants($color, $prefix) {
-  --#{$prefix}: #{$color};
-  --#{$prefix}-10: #{rgba($color, 0.1)};
-  --#{$prefix}-20: #{rgba($color, 0.2)};
-  --#{$prefix}-30: #{rgba($color, 0.3)};
 }
 
 // Stack (vertical spacing)
@@ -76,38 +55,98 @@
   }
 }
 
+// Aspect ratio mixin
+// Fluid Typography
+@mixin fluid-type($min-size, $max-size, $min-vw: 320px, $max-vw: 1200px) {
+  font-size: clamp(#{$min-size}, 
+    calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * 
+    ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})), 
+    #{$max-size});
+}
 
+// Heading styles
+@mixin heading-base {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
 
-
-  // Flex Center
+// Flex Center
 @mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Clearfix
+@mixin clearfix { 
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
   }
+}
+
+// Text Truncate
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Transition
+@mixin transition($property, $duration, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+// Box Shadow
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+@mixin generate-color-variants($color, $prefix) {
+  // Base color
+  --#{$prefix}: #{$color};
   
-  // Clearfix
-  @mixin clearfix { 
-    &::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-  }
+  // Opacity variants
+  --#{$prefix}-10: #{rgba($color, 0.1)};
+  --#{$prefix}-20: #{rgba($color, 0.2)};
+  --#{$prefix}-30: #{rgba($color, 0.3)};
+  --#{$prefix}-40: #{rgba($color, 0.4)};
+  --#{$prefix}-50: #{rgba($color, 0.5)};
+  --#{$prefix}-60: #{rgba($color, 0.6)};
+  --#{$prefix}-70: #{rgba($color, 0.7)};
+  --#{$prefix}-80: #{rgba($color, 0.8)};
+  --#{$prefix}-90: #{rgba($color, 0.9)};
   
-  // Text Truncate
-  @mixin text-truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  // Lightness scale
+  --#{$prefix}-lighter-40: #{scale-color($color, $lightness: 40%)};
+  --#{$prefix}-lighter-30: #{scale-color($color, $lightness: 30%)};
+  --#{$prefix}-lighter-20: #{scale-color($color, $lightness: 20%)};
+  --#{$prefix}-lighter-10: #{scale-color($color, $lightness: 10%)};
   
-  // Transition
-  @mixin transition($property, $duration, $timing: ease) {
-    transition: $property $duration $timing;
-  }
+  // Darkness scale
+  --#{$prefix}-darker-10: #{scale-color($color, $lightness: -10%)};
+  --#{$prefix}-darker-20: #{scale-color($color, $lightness: -20%)};
+  --#{$prefix}-darker-30: #{scale-color($color, $lightness: -30%)};
+  --#{$prefix}-darker-40: #{scale-color($color, $lightness: -40%)};
   
-  // Box Shadow
-  @mixin box-shadow($x, $y, $blur, $color) {
-    box-shadow: $x $y $blur $color;
-  }
+  // Saturation variants
+  --#{$prefix}-saturated-10: #{scale-color($color, $saturation: 10%)};
+  --#{$prefix}-saturated-20: #{scale-color($color, $saturation: 20%)};
+  --#{$prefix}-desaturated-10: #{scale-color($color, $saturation: -10%)};
+  --#{$prefix}-desaturated-20: #{scale-color($color, $saturation: -20%)};
+  
+  // Mix with white/black for different tints/shades
+  --#{$prefix}-tint-10: #{mix(white, $color, 10%)};
+  --#{$prefix}-tint-20: #{mix(white, $color, 20%)};
+  --#{$prefix}-shade-10: #{mix(black, $color, 10%)};
+  --#{$prefix}-shade-20: #{mix(black, $color, 20%)};
+  
+  // HSL adjustments
+  --#{$prefix}-warm: #{adjust-hue($color, 5deg)};
+  --#{$prefix}-cool: #{adjust-hue($color, -5deg)};
+}

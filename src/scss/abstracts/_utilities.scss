@@ -1,2 +1,51 @@
-@use "variables"as *;
-@use "mixins"as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// Text colors
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+.text-inverse { color: var(--color-inverse-text)!important; }
+
+// Background colors
+.bg-primary { background-color: var(--color-background-primary); }
+.bg-secondary { background-color: var(--color-background-secondary); }
+.bg-tertiary { background-color: var(--color-background-tertiary); }
+.bg-inverse { background-color: var(--color-inverse-background); }
+
+// Border utilities
+.border-light { border-color: var(--color-border-light); }
+.border-default { border-color: var(--color-border-default); }
+.border-dark { border-color: var(--color-border-dark); }
+
+// Shadow utilities
+.shadow-sm { box-shadow: #{$shadow-sm}; }
+.shadow-md { box-shadow: #{$shadow-md}; }
+.shadow-lg { box-shadow: #{$shadow-lg}; }
+
+// State utilities
+.disabled {
+  background-color: #{$color-disabled-background};
+  color: #{$color-disabled-text};
+  border-color: #{$color-disabled-border};
+}
+
+// Semantic colors (these don't change with theme)
+.text-success { color: #{$color-success}; }
+.text-warning { color: #{$color-warning}; }
+.text-error { color: #{$color-error}; }
+.text-info { color: #{$color-info}; }
+
+// Alignment Utilities
+.align-center {
+  justify-items: center;
+  align-items: center;
+}
+.align-start {
+  justify-items: start;
+  align-items: start;
+}
+.align-end {
+  justify-items: end;
+  align-items: end;
+}
