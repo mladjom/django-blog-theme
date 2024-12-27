@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const navContainer = document.querySelector('.nav-container');
-  const navToggler = document.querySelector('.nav-toggler');
-  const navLinks = document.querySelector('.nav-links');
+  const navContainer = document.querySelector('.navigation');
+  const navToggler = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.navigation-links');
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
   // Toggle main navigation
@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle dropdowns
   dropdownToggles.forEach(toggle => {
     const dropdown = toggle.nextElementSibling;
-    
+
     // Toggle dropdown on click
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      
+
       // Close other open dropdowns
       dropdownToggles.forEach(otherToggle => {
         if (otherToggle !== toggle) {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle hover for desktop
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 992) {
       toggle.parentElement?.addEventListener('mouseenter', () => {
         toggle.setAttribute('aria-expanded', 'true');
         dropdown?.classList.add('show');
@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Close navigation when clicking outside
   document.addEventListener('click', (e) => {
-    if (!navContainer.contains(e.target)) {
+    if (navContainer && !navContainer.contains(e.target)) {
       navLinks?.classList.remove('show');
       navToggler?.setAttribute('aria-expanded', 'false');
-      
+
       dropdownToggles.forEach(toggle => {
         toggle.setAttribute('aria-expanded', 'false');
         toggle.nextElementSibling?.classList.remove('show');
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') {
       navLinks?.classList.remove('show');
       navToggler?.setAttribute('aria-expanded', 'false');
-      
+
       dropdownToggles.forEach(toggle => {
         toggle.setAttribute('aria-expanded', 'false');
         toggle.nextElementSibling?.classList.remove('show');
