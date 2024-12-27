@@ -3,7 +3,12 @@
 
 :root {
   // Theme colors that might change
-  @include generate-color-variants(#000000, 'color-neutral');  
+
+  @include generate-color-variants($color-success, 'color-success');
+  @include generate-color-variants($color-warning, 'color-warning');
+  @include generate-color-variants($color-error, 'color-error');
+  @include generate-color-variants($color-info, 'color-info');
+
   // Text colors
   --color-text-primary: #{$color-neutral-900};
   --color-text-secondary: #{$color-neutral-600};
@@ -20,12 +25,12 @@
   --color-border-dark: #{$color-neutral-500};
   
   // Link colors
-  --color-link: #{$color-brand-primary};
-  --color-link-hover: #{$color-brand-primary-dark};
+  --color-link: #{$color-primary};
+  --color-link-hover: #{$color-primary-dark};
   
   // Inverse colors
   --color-inverse-text: #{$color-neutral-100};
-  --color-inverse-background: #{$color-brand-primary};
+  --color-inverse-background: #{$color-primary};
   
   // Shadow color
   --shadow-color: #{$color-shadow}; 

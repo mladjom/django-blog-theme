@@ -1,35 +1,34 @@
-@use "../abstracts/mixins" as *;
-@use "../abstracts/variables" as *;
-@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as mixin ;
+@use "../abstracts/variables" as vars;
+@use "../abstracts/functions" as func;
 @use 'sass:map';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 // Base styles for the body
 body {
-  font-family: $font-family-base;
-  // ...existing code...
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  font-weight: $font-weight-regular;
-  color: $color-text-primary;
-  background-color: $color-background-primary; 
+  font-family: vars.$font-family-base;
+  font-size: vars.$font-size-base;
+  line-height: vars.$line-height-base;
+  font-weight: vars.$font-weight-regular;
+  color: var(--color-text-primary);
+  background-color: var(--color--background-primary); 
 }
 
 // Headings base styles
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  @include heading-base;
-  color: $color-text-primary;
+  @include mixin.heading-base;
+  color: var(--color-text-primary);
 }
 
 // Individual heading styles with fluid typography
-h1, .h1 { @include fluid-type(rem(40), $h1); @include heading-base; }
-h2, .h2 { @include fluid-type(rem(32), $h2); @include heading-base; }
-h3, .h3 { @include fluid-type(rem(28), $h3); @include heading-base; }
-h4, .h4 { @include fluid-type(rem(24), $h4); @include heading-base; }
-h5, .h5 { @include fluid-type(rem(20), $h5); @include heading-base; }
-h6, .h6 { @include fluid-type(rem(16), $h6); @include heading-base; }
+h1, .h1 { @include mixin.fluid-type(vars.$h1);} 
+h2, .h2 { @include mixin.fluid-type(vars.$h2);}   
+h3, .h3 { @include mixin.fluid-type(vars.$h3);}
+h4, .h4 { @include mixin.fluid-type(vars.$h4);}
+h5, .h5 { @include mixin.fluid-type(vars.$h5);}
+h6, .h6 { @include mixin.fluid-type(vars.$h6);}
 
 // Paragraph styles
 p {
@@ -37,20 +36,20 @@ p {
   max-width: 70ch;
   
   &.lead {
-    font-size: $font-size-lg;
+    font-size: vars.$font-size-lg;
     color:  var(--color-text-secondary);
   }
 }
 
 // Link styles
 a {
-  color: $color-link;
+  color: var(--color-link);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
   transition: all 0.2s ease;
   
   &:hover {
-    color: $color-link-hover;
+    color: var(--color-link-hover);
     text-decoration-thickness: 2px;
   }
 }
@@ -59,90 +58,99 @@ a {
 ul, ol {
   padding-left: 1.5em;
   margin-bottom: 1.5em;
-  color: $color-text-primary;
+  color: var(--color-text-primary);
 }
 
 // Blockquote styles
 blockquote {
-  border-left: 3px solid $color-brand-primary;
+  border-left: 3px solid var(--color--primary);
   padding-left: 1em;
   margin: 2em 0;
   font-style: italic;
-  color: $color-text-secondary;
+  color: var(--color--text-secondary);
 }
 
 // Meta text elements
 small, .text-small {
-  font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  font-size: vars.$font-size-sm;
+  color: var(--color--text-tertiary);
 }
 
 // Selection styles
 ::selection {
-  background-color: rgba($color-brand-primary, 0.1);
-  color: $color-brand-primary;
+  background-color: rgba(var(--color--primary, 0.1));
+  color: var(--color--primary);
 }
+
+
+
+
 
 // Article specific styles
 .article {
   h1 {
-    color: $color-text-primary;
+    color: var(--color-text-primary);
     
     + .article-meta {
-      color: $color-text-tertiary;
+      color: var(--color--text-tertiary);
       margin-bottom: 2em;
     }
   }
   
   // Article links
   .content a:not([class]) {
-    color: $color-text-primary;
-    text-decoration-color: $color-brand-primary;
+    color: var(--color-text-primary);
+    text-decoration-color: var(--color--primary);
     
     &:hover {
-      color: $color-brand-primary;
+      color: var(--color--primary);
     }
   }
 }
 
 // Article typography spacing
 .article {
-  @include stack($space-lg);
+  @include mixin.stack(10rem);
   
   h1, h2, h3, h4, h5, h6 {
-    margin-top: $space-xl;
-    margin-bottom: $space-xs;
+    margin-top: vars.$space-xl;
+    margin-bottom: vars.$space-xs;
   }
   
   p {
-    margin-bottom: $space-md;
+    margin-bottom: vars.$space-md;
   }
   
   ul, ol {
-    margin: $space-md 0;
-    padding-left: $space-lg;
+    margin: vars.$space-md 0;
+    padding-left: vars.$space-lg;
     
     li + li {
-      margin-top: $space-xs;
+      margin-top: vars.$space-xs;
     }
   }
   
   blockquote {
-    margin: $space-lg 0;
-    padding: $space-md $space-lg;
+    margin: vars.$space-lg 0;
+    padding: vars.$space-md vars.$space-lg;
   }
+}
+
+.content-section-responsive {
+  //@include mixin.responsive-section-padding('md');
+  @include mixin.responsive-section-padding('lg');
 }
 
 // Content sections
 .content-section {
-  @include section-padding;
-  
-  &--sm {
-    @include section-padding('sm');
+
+  @include mixin.section-padding;
+  &--md {
+    @include mixin.section-padding('md');
   }
   
   &--lg {
-    @include section-padding('lg');
+    @include mixin.section-padding('lg');
   }
 }
 

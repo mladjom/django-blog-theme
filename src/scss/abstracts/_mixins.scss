@@ -1,5 +1,5 @@
-@use "../abstracts/variables" as *;
-@use "../abstracts/functions" as *;
+@use "../abstracts/variables" as vars;
+@use "../abstracts/functions" as func;
 @use 'sass:map';
 @use "sass:math";
 @use "sass:color";
@@ -10,8 +10,8 @@
 
 // Modern mixin for media queries
 @mixin breakpoint($size) {
-  @if map.has-key($breakpoints, $size) {
-    @media screen and (max-width: map.get($breakpoints, $size)) {
+  @if map.has-key(vars.$breakpoints, $size) {
+    @media screen and (min-width: map.get(vars.$breakpoints, $size)) {
       @content;
     }
   } @else {
@@ -24,6 +24,21 @@
   display: flex;
   flex-direction: column;
   gap: $space;
+}
+
+// Modified responsive-stack mixin that accepts a spacing configuration
+@mixin responsive-stack($default-space: $space-md, $responsive-spaces: ()) {
+  display: flex;
+  flex-direction: column;
+  gap: $default-space; // Base spacing for mobile
+
+  @each $breakpoint, $space in $responsive-spaces {
+    @if map.has-key(vars.$breakpoints, $breakpoint) {
+      @include breakpoint($breakpoint) {
+        gap: $space;
+      }
+    }
+  }
 }
 
 // Cluster (horizontal spacing)
@@ -45,31 +60,47 @@
 }
 
 // Section padding
-@mixin section-padding($size: 'md') {
-  @if $size == 'sm' {
-    padding: $section-spacing-sm 0;
+@mixin section-padding($size: 'sm') {
+  @if $size == 'md' {
+    padding: vars.$section-spacing-md 0;
   } @else if $size == 'lg' {
-    padding: $section-spacing-lg 0;
+    padding: vars.$section-spacing-lg 0;
   } @else {
-    padding: $section-spacing-md 0;
+    padding: vars.$section-spacing-sm 0;
   }
 }
 
-// Aspect ratio mixin
-// Fluid Typography
-@mixin fluid-type($min-size, $max-size, $min-vw: 320px, $max-vw: 1200px) {
-  font-size: clamp(#{$min-size}, 
-    calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * 
-    ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})), 
-    #{$max-size});
+// Responsive section padding
+@mixin responsive-section-padding($size: 'sm') {
+  padding: vars.$section-spacing-sm 0; // Default padding for small size
+
+  @include breakpoint(md) {
+    @if $size == 'md' {
+      padding: vars.$section-spacing-md 0;
+    }
+  }
+
+  @include breakpoint(lg) {
+    @if $size == 'lg' {
+      padding: vars.$section-spacing-lg 0;
+    }
+  }
 }
+
+
+@mixin fluid-type($max-size) {
+  $scale-factor: 1.25; // Major third scale factor
+  $min-size: math.div($max-size, $scale-factor); // Scale down the max size by the factor
+  font-size: clamp(#{$min-size}, 5vw, #{$max-size});
+}
+
 
 // Heading styles
 @mixin heading-base {
-  font-family: $font-family-heading;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-tight;
-  letter-spacing: $letter-spacing-tight;
+  font-family: vars.$font-family-heading;
+  font-weight: vars.$font-weight-bold;
+  line-height: vars.$line-height-tight;
+  letter-spacing: vars.$letter-spacing-tight;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
@@ -111,42 +142,12 @@
   // Base color
   --#{$prefix}: #{$color};
   
-  // Opacity variants
+  // Just a few opacity variants for overlays and subtle backgrounds
   --#{$prefix}-10: #{rgba($color, 0.1)};
   --#{$prefix}-20: #{rgba($color, 0.2)};
   --#{$prefix}-30: #{rgba($color, 0.3)};
-  --#{$prefix}-40: #{rgba($color, 0.4)};
-  --#{$prefix}-50: #{rgba($color, 0.5)};
-  --#{$prefix}-60: #{rgba($color, 0.6)};
-  --#{$prefix}-70: #{rgba($color, 0.7)};
-  --#{$prefix}-80: #{rgba($color, 0.8)};
-  --#{$prefix}-90: #{rgba($color, 0.9)};
   
-  // Lightness scale
-  --#{$prefix}-lighter-40: #{scale-color($color, $lightness: 40%)};
-  --#{$prefix}-lighter-30: #{scale-color($color, $lightness: 30%)};
-  --#{$prefix}-lighter-20: #{scale-color($color, $lightness: 20%)};
-  --#{$prefix}-lighter-10: #{scale-color($color, $lightness: 10%)};
-  
-  // Darkness scale
-  --#{$prefix}-darker-10: #{scale-color($color, $lightness: -10%)};
-  --#{$prefix}-darker-20: #{scale-color($color, $lightness: -20%)};
-  --#{$prefix}-darker-30: #{scale-color($color, $lightness: -30%)};
-  --#{$prefix}-darker-40: #{scale-color($color, $lightness: -40%)};
-  
-  // Saturation variants
-  --#{$prefix}-saturated-10: #{scale-color($color, $saturation: 10%)};
-  --#{$prefix}-saturated-20: #{scale-color($color, $saturation: 20%)};
-  --#{$prefix}-desaturated-10: #{scale-color($color, $saturation: -10%)};
-  --#{$prefix}-desaturated-20: #{scale-color($color, $saturation: -20%)};
-  
-  // Mix with white/black for different tints/shades
-  --#{$prefix}-tint-10: #{mix(white, $color, 10%)};
-  --#{$prefix}-tint-20: #{mix(white, $color, 20%)};
-  --#{$prefix}-shade-10: #{mix(black, $color, 10%)};
-  --#{$prefix}-shade-20: #{mix(black, $color, 20%)};
-  
-  // HSL adjustments
-  --#{$prefix}-warm: #{adjust-hue($color, 5deg)};
-  --#{$prefix}-cool: #{adjust-hue($color, -5deg)};
+  // One lighter and one darker variant for hover states and emphasis
+  --#{$prefix}-lighter: #{color.scale($color, $lightness: 20%)};
+  --#{$prefix}-darker: #{color.scale($color, $lightness: -10%)};
 }

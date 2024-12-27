@@ -1,48 +1,82 @@
-@use "../abstracts/mixins" as *;
-@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as mixin;
+@use "../abstracts/variables" as vars;
 @use 'sass:map';
 
 // Container
 .container {
-  width: min(100% - 2rem, 75rem);
+  width: min(100% - 3rem, 75rem);
   margin-inline: auto;
+
+
+}
+
+// Fixed stack example
+.fixed-stack {
+  @include mixin.stack(2rem);
+  margin-bottom: 4rem;
+}
+
+// Example usage with different spacings at different breakpoints
+.responsive-stack {
+  // Start with xs spacing, then increase at each breakpoint
+  @include mixin.responsive-stack(
+    map.get(vars.$spacing, 'xs'),  // Default/mobile spacing
+    (
+      'sm': map.get(vars.$spacing, 'sm'),
+      'md': map.get(vars.$spacing, 'lg'),
+      'lg': map.get(vars.$spacing, 'xl'),
+    )
+  );
+}
+
+// Card styling
+.card {
+  background: #f0f0f0;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+h2 {
+  color: #333;
 }
 
 // Modern Grid System
 .grid {
   display: grid;
-  gap: map.get($spacing, 'md');
+  gap: map.get(vars.$spacing, 'md');
   
   // Basic column variants
   &--2-cols {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     
-    @include breakpoint('md') {
-      grid-template-columns: 1fr;
+    @include mixin.breakpoint('md') {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   
   &--3-cols {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     
-    @include breakpoint('lg') {
+    @include mixin.breakpoint('md') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @include breakpoint('md') {
-      grid-template-columns: 1fr;
-    } 
+    @include mixin.breakpoint('lg') {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   
   &--4-cols {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     
-    @include breakpoint('lg') {
+    @include mixin.breakpoint('md') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @include breakpoint('md') {
-      grid-template-columns: 1fr;
+    @include mixin.breakpoint('lg') {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
   
@@ -53,23 +87,23 @@
   
   // Gap variations
   &--gap-sm {
-    gap: map.get($spacing, 'sm');
+    gap: map.get(vars.$spacing, 'sm');
   }
   
   &--gap-lg {
-    gap: map.get($spacing, 'lg');
+    gap: map.get(vars.$spacing, 'lg');
   }
 }
 
 // Layout patterns with improved responsiveness
 .layout {
   display: grid;
-  gap: map.get($spacing, 'md');
+  gap: map.get(vars.$spacing, 'md');
   
   &--sidebar {
     grid-template-columns: 3fr 1fr;
     
-    @include breakpoint('lg') {
+    @include mixin.breakpoint('lg') {
       grid-template-columns: 1fr;
     }
   }
@@ -77,7 +111,7 @@
   &--equal {
     grid-template-columns: 1fr 1fr;
     
-    @include breakpoint('md') {
+    @include mixin.breakpoint('md') {
       grid-template-columns: 1fr;
     }
   }
@@ -85,7 +119,7 @@
   &--featured {
     grid-template-columns: 2fr 1fr;
     
-    @include breakpoint('md') {
+    @include mixin.breakpoint('md') {
       grid-template-columns: 1fr;
     }
   }
