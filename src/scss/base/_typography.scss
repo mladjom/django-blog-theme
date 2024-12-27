@@ -92,7 +92,7 @@ small, .text-small {
     color: var(--color-text-primary);
     
     + .article-meta {
-      color: var(--color--text-tertiary);
+      color: var(--color-text-tertiary);
       margin-bottom: 2em;
     }
   }
@@ -103,7 +103,7 @@ small, .text-small {
     text-decoration-color: var(--color--primary);
     
     &:hover {
-      color: var(--color--primary);
+      color: var(--color-link-hover);
     }
   }
 }
@@ -136,23 +136,6 @@ small, .text-small {
   }
 }
 
-.content-section-responsive {
-  //@include mixin.responsive-section-padding('md');
-  @include mixin.responsive-section-padding('lg');
-}
-
-// Content sections
-.content-section {
-
-  @include mixin.section-padding;
-  &--md {
-    @include mixin.section-padding('md');
-  }
-  
-  &--lg {
-    @include mixin.section-padding('lg');
-  }
-}
 
 // Responsive Adjustments
 // @include respond-to(sm) {

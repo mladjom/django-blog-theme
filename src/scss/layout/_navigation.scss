@@ -11,7 +11,7 @@
   height: $nav-height;
   background-color: $nav-bg;
   color: $nav-text-color;
-  //padding: 0 $space-md;
+  // Padding removed (commented out) as per your logic
   
   // Brand
   .nav-brand {
@@ -29,7 +29,7 @@
 
   // Navigation toggle button
   .nav-toggler {
-    display: none;
+    display: block; // Default to block for mobile-first
     background: none;
     border: none;
     font-size: $h5;
@@ -50,15 +50,24 @@
 
   // Navigation links
   .nav-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: $space-xs;
-    transition: transform $transition-speed ease;
+    display: none; // Default to hidden for mobile
+    flex-direction: column; // Stack vertically on mobile
+    position: absolute;
+    top: $nav-height;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: $nav-bg;
+    padding: $space-sm;
+    box-shadow: 0 4px 6px rgba($color-shadow, 0.1);
+    margin-bottom: 0; // Remove inherited margin-bottom
+    
+    &.show {
+      display: flex;
+    }
 
     .nav-item {
-      position: relative;
+      margin: $space-xs 0;
 
       .nav-link,
       .dropdown-toggle {
@@ -104,27 +113,19 @@
         }
 
         .dropdown-menu {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          min-width: 200px;
-          background-color: $nav-bg;
-          padding: $space-sm;
-          margin: 0;
-          list-style: none;
-          border: 1px solid $color-border-default;
-          border-radius: 4px;
-          box-shadow: 0 2px 8px $color-shadow;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(-10px);
-          transition: all $transition-speed ease;
-          z-index: $dropdown-z-index;
-
+          position: static;
+          width: 100%;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          display: none;
+          padding-left: $space-md;
+          box-shadow: none;
+          border: none;
+          margin-bottom: 0!important; // Remove margin-bottom
+          
           &.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+            display: block;
           }
 
           .dropdown-link {
@@ -152,49 +153,79 @@
     }
   }
 
-  // Mobile styles
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    
+  // For screens larger than 'md' (tablet and above)
+  @include respond-to('lg') {
     .nav-toggler {
-      display: block;
-      z-index: $dropdown-z-index + 1;
+      display: none; // Hide the toggle button on larger screens
     }
 
     .nav-links {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: $nav-height;
-      left: 0;
-      right: 0;
-      width: 100%;
-      background-color: $nav-bg;
-      padding: $space-sm;
-      box-shadow: 0 4px 6px rgba($color-shadow, 0.1);
-      
-      &.show {
-        display: flex;
-      }
+      display: flex; // Show links as a horizontal row on medium screens
+      flex-direction: row;
+      position: static;
+      width: auto;
+      background-color: transparent;
+      padding: 0;
+      box-shadow: none;
+      align-items: center; // Align links with the logo
 
       .nav-item {
-        margin: $space-xs 0;
+        margin: 0 $space-xs;
 
         &.dropdown {
+          position: relative; // Ensure dropdown is positioned relative to the item
+
           .dropdown-menu {
-            position: static;
-            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background-color: $nav-bg;
+            padding: $space-sm;
+            margin: 0;
+            list-style: none;
+            border: 1px solid $color-border-default;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px $color-shadow;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all $transition-speed ease;
+            z-index: $dropdown-z-index;
+
+            &.show {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+            }
+
+            .dropdown-link {
+              text-decoration: none;
+              color: inherit;
+              padding: $space-xs $space-sm;
+              display: block;
+              border-radius: 2px;
+              transition: all $transition-speed ease;
+              
+              &:hover,
+              &:focus {
+                background-color: $nav-hover-color;
+                color: #fff;
+                outline: none;
+              }
+
+              &:focus-visible {
+                outline: 2px solid $nav-hover-color;
+                outline-offset: -2px;
+              }
+            }
+          }
+
+          &:hover .dropdown-menu,
+          &:focus-within .dropdown-menu {
             opacity: 1;
             visibility: visible;
-            transform: none;
-            display: none;
-            padding-left: $space-md;
-            box-shadow: none;
-            border: none;
-            
-            &.show {
-              display: block;
-            }
+            transform: translateY(0);
           }
         }
       }

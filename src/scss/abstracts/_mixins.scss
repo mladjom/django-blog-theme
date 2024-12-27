@@ -9,7 +9,7 @@
 \*------------------------------------*/
 
 // Modern mixin for media queries
-@mixin breakpoint($size) {
+@mixin respond-to($size) {
   @if map.has-key(vars.$breakpoints, $size) {
     @media screen and (min-width: map.get(vars.$breakpoints, $size)) {
       @content;
@@ -34,7 +34,7 @@
 
   @each $breakpoint, $space in $responsive-spaces {
     @if map.has-key(vars.$breakpoints, $breakpoint) {
-      @include breakpoint($breakpoint) {
+      @include respond-to($breakpoint) {
         gap: $space;
       }
     }
@@ -74,13 +74,13 @@
 @mixin responsive-section-padding($size: 'sm') {
   padding: vars.$section-spacing-sm 0; // Default padding for small size
 
-  @include breakpoint(md) {
+  @include respond-to(md) {
     @if $size == 'md' {
       padding: vars.$section-spacing-md 0;
     }
   }
 
-  @include breakpoint(lg) {
+  @include respond-to(lg) {
     @if $size == 'lg' {
       padding: vars.$section-spacing-lg 0;
     }

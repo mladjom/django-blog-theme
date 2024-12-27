@@ -10,6 +10,26 @@
 
 }
 
+.responsive-section-padding {
+  //@include mixin.responsive-section-padding('md');
+  @include mixin.responsive-section-padding('lg');
+}
+
+// Content sections
+.section-padding {
+
+  @include mixin.section-padding;
+  &--md {
+    @include mixin.section-padding('md');
+  }
+  
+  &--lg {
+    @include mixin.section-padding('lg');
+  }
+}
+
+
+
 // Fixed stack example
 .fixed-stack {
   @include mixin.stack(2rem);
@@ -51,7 +71,7 @@ h2 {
   &--2-cols {
     grid-template-columns: 1fr;
     
-    @include mixin.breakpoint('md') {
+    @include mixin.respond-to('md') {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -59,11 +79,11 @@ h2 {
   &--3-cols {
     grid-template-columns: 1fr;
     
-    @include mixin.breakpoint('md') {
+    @include mixin.respond-to('md') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @include mixin.breakpoint('lg') {
+    @include mixin.respond-to('lg') {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -71,11 +91,11 @@ h2 {
   &--4-cols {
     grid-template-columns: 1fr;
     
-    @include mixin.breakpoint('md') {
+    @include mixin.respond-to('md') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @include mixin.breakpoint('lg') {
+    @include mixin.respond-to('lg') {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -103,7 +123,7 @@ h2 {
   &--sidebar {
     grid-template-columns: 3fr 1fr;
     
-    @include mixin.breakpoint('lg') {
+    @include mixin.respond-to('lg') {
       grid-template-columns: 1fr;
     }
   }
@@ -111,7 +131,7 @@ h2 {
   &--equal {
     grid-template-columns: 1fr 1fr;
     
-    @include mixin.breakpoint('md') {
+    @include mixin.respond-to('md') {
       grid-template-columns: 1fr;
     }
   }
@@ -119,7 +139,7 @@ h2 {
   &--featured {
     grid-template-columns: 2fr 1fr;
     
-    @include mixin.breakpoint('md') {
+    @include mixin.respond-to('md') {
       grid-template-columns: 1fr;
     }
   }
