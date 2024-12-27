@@ -1,37 +1,47 @@
-@use "../abstracts/variables" as *; 
-@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as vars; 
+@use "../abstracts/mixins" as mixin;
 
 :root {
-  // Theme colors that might change
+  // Primary Colors
+  --color-primary: #{vars.$color-primary};
+  --color-primary-light: #{vars.$color-primary-light};
+  --color-primary-dark: #{vars.$color-primary-dark};
+  
+  // Neutral Colors
+  --color-neutral-100: #{vars.$color-neutral-100};
+  --color-neutral-200: #{vars.$color-neutral-200};
+  --color-neutral-300: #{vars.$color-neutral-300};
+  --color-neutral-400: #{vars.$color-neutral-400};
+  --color-neutral-500: #{vars.$color-neutral-500};
+  --color-neutral-600: #{vars.$color-neutral-600};
+  --color-neutral-700: #{vars.$color-neutral-700};
+  --color-neutral-800: #{vars.$color-neutral-800};
+  --color-neutral-900: #{vars.$color-neutral-900};
 
-  @include generate-color-variants($color-success, 'color-success');
-  @include generate-color-variants($color-warning, 'color-warning');
-  @include generate-color-variants($color-error, 'color-error');
-  @include generate-color-variants($color-info, 'color-info');
+  // Text Colors
+  --color-text-primary: #{vars.$color-text-primary};
+  --color-text-secondary: #{vars.$color-text-secondary};
+  --color-text-tertiary: #{vars.$color-text-tertiary};
 
-  // Text colors
-  --color-text-primary: #{$color-neutral-900};
-  --color-text-secondary: #{$color-neutral-600};
-  --color-text-tertiary: #{$color-neutral-500};
-  
-  // Background colors
-  --color-background-primary: #{$color-neutral-100};
-  --color-background-secondary: #{$color-neutral-200};
-  --color-background-tertiary: #{$color-neutral-300};
-  
-  // Border colors
-  --color-border-light: #{$color-neutral-300};
-  --color-border-default: #{$color-neutral-400};
-  --color-border-dark: #{$color-neutral-500};
-  
-  // Link colors
-  --color-link: #{$color-primary};
-  --color-link-hover: #{$color-primary-dark};
-  
-  // Inverse colors
-  --color-inverse-text: #{$color-neutral-100};
-  --color-inverse-background: #{$color-primary};
-  
-  // Shadow color
-  --shadow-color: #{$color-shadow}; 
+  // Link Colors
+  --color-link: #{vars.$color-link};
+  --color-link-hover: #{vars.$color-link-hover};
+
+  // Background Colors
+  --color-background-primary: #{vars.$color-background-primary};
+  --color-background-secondary: #{vars.$color-background-secondary};
+  --color-background-tertiary: #{vars.$color-background-tertiary};
+
+  // Border Colors
+  --color-border-light: #{vars.$color-border-light};
+  --color-border-default: #{vars.$color-border-default};
+  --color-border-dark: #{vars.$color-border-dark};
+
+  // Shadow
+  --color-shadow: #{vars.$color-shadow};
 }
+
+// s@include generate-color-variants($color-success, 'color-success');
+//   @include generate-color-variants($color-warning, 'color-warning');
+//   @include generate-color-variants($color-error, 'color-error');
+//   @include generate-color-variants($color-info, 'color-info');

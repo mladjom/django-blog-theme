@@ -27,7 +27,7 @@
 }
 
 // Modified responsive-stack mixin that accepts a spacing configuration
-@mixin responsive-stack($default-space: $space-md, $responsive-spaces: ()) {
+@mixin responsive-stack($default-space: $space-sm, $responsive-spaces: ()) { 
   display: flex;
   flex-direction: column;
   gap: $default-space; // Base spacing for mobile

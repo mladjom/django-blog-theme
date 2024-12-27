@@ -54,9 +54,7 @@ $color-border-dark: $color-neutral-500;
 
 // Shadow Colors & Definitions
 $color-shadow: rgba($color-neutral-900, 0.1);
-$shadow-sm: 0 1px 2px 0 $color-shadow;
-$shadow-md: 0 4px 6px -1px $color-shadow;
-$shadow-lg: 0 10px 15px -3px $color-shadow;
+
 
 // Disabled State Colors
 $color-disabled-background: $color-neutral-200;
@@ -66,6 +64,15 @@ $color-disabled-border: $color-neutral-300;
 // Inverse Colors 
 $color-inverse-text: $color-neutral-100;
 $color-inverse-background: $color-primary;
+
+// Border Radiuss
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 1rem;
+
+$shadow-sm: 0 1px 2px 0 $color-shadow;
+$shadow-md: 0 4px 6px -1px $color-shadow;
+$shadow-lg: 0 10px 15px -3px $color-shadow;
 
 // Typography
 // Font Families, Weights, and Sizes, Line Heights, and Spacing, 
@@ -141,9 +148,9 @@ $breakpoints: (
 );
 
 // Section spacing
-$section-spacing-sm: $space-xl;    // 48px
-$section-spacing-md: $space-2xl;   // 64px
-$section-spacing-lg: $space-3xl;   // 96px
+$section-spacing-sm: $space-sm;    // 16px
+$section-spacing-md: $space-lg;   // 64px
+$section-spacing-lg: $space-xl;   // 96px
 
 // Component specific spacing
 $component-padding: $space-md;     // 24px
