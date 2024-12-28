@@ -87,13 +87,23 @@
   }
 }
 
-
 @mixin fluid-type($max-size) {
   $scale-factor: 1.25; // Major third scale factor
   $min-size: math.div($max-size, $scale-factor); // Scale down the max size by the factor
   font-size: clamp(#{$min-size}, 5vw, #{$max-size});
 }
 
+@mixin aspect-ratio($width, $height) {
+  aspect-ratio: calc($width / $height);
+  overflow: hidden;
+}
+
+
+@mixin image-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 // Heading styles
 @mixin heading-base {

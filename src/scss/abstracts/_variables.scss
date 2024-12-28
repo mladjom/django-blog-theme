@@ -1,78 +1,52 @@
-@use 'sass:color';
 @use 'sass:math';
-/**
- * Brand Colors
- * 1) Brand=specific colors
- */
-$color-primary: #e34449; 
-$color-primary-light: color.scale($color-primary, $lightness: 20%);
-$color-primary-dark: color.scale($color-primary, $lightness: -10%);
 
-/**
- * Neutral Colors
- * 1) Neutral colors are grayscale values used throughout the UI
- */
-$color-neutral-100: #ffffff;
-$color-neutral-200: #f8f9fa;
-$color-neutral-300: #e9ecef;
-$color-neutral-400: #ced4da;
-$color-neutral-500: #adb5bd;
-$color-neutral-600: #6c757d;
-$color-neutral-700: #495057;
-$color-neutral-800: #343a40;
-$color-neutral-900: #212529;
+$themes: ("light", "dark", "blue-light", "blue-dark", "red-light", "red-dark");
 
-/**
- * Utility Colors
- * 1) Utility colors are colors used to provide feedback, such as alert messages,
- *    form validation, etc.
- */
-$color-success: #28a745;
-$color-warning: #ffc107;
-$color-error: #dc3545;
-$color-info: #17a2b8;
+$colors-neutral: (
+  100: #ffffff,
+  200: #f8f9fa,
+  300: #e9ecef,
+  400: #ced4da,
+  500: #adb5bd,
+  600: #6c757d,
+  700: #495057,
+  800: #343a40,
+  900: #212529
+);
 
-// Text Colors
-$color-text-primary: $color-neutral-900;
-$color-text-secondary: $color-neutral-600;
-$color-text-tertiary: $color-neutral-500;
+$colors-blue: (
+  primary: #00bcf1,
+  light: #33c9f4,
+  dark: #0099c4
+);
 
-// Link Colors
-$color-link: $color-primary;
-$color-link-hover: $color-primary-dark;
+$colors-red: (
+  primary: #e34449,
+  light: #e86368,
+  dark: #d92d32
+);
 
-// Background Colors
-$color-background-primary: $color-neutral-100;
-$color-background-secondary: $color-neutral-200;
-$color-background-tertiary: $color-neutral-300;
-
-// Border Colors
-$color-border-light: $color-neutral-300;    // Subtle borders
-$color-border-default: $color-neutral-400;   // Standard borders
-$color-border-dark: $color-neutral-500; 
+$colors-utility: (
+  success: #28a745,
+  warning: #ffc107,
+  error: #dc3545,
+  info: #17a2b8
+);
 
 
-// Shadow Colors & Definitions
-$color-shadow: rgba($color-neutral-900, 0.1);
 
 
-// Disabled State Colors
-$color-disabled-background: $color-neutral-200;
-$color-disabled-text: $color-neutral-500;
-$color-disabled-border: $color-neutral-300;
 
-// Inverse Colors 
-$color-inverse-text: $color-neutral-100;
-$color-inverse-background: $color-primary;
 
-// Border Radiuss
-$border-radius-sm: 0.25rem;
-$border-radius-md: 0.5rem;
-$border-radius-lg: 1rem;
+// Border Radius
+$border-radius: (
+  'md': 4px,
+  'lg': 8px
+);
 
-$shadow-sm: 0 1px 2px 0 $color-shadow;
-$shadow-md: 0 4px 6px -1px $color-shadow;
-$shadow-lg: 0 10px 15px -3px $color-shadow;
+// $shadow-sm: 0 1px 2px 0 $color-shadow;
+// $shadow-md: 0 4px 6px -1px $color-shadow;
+// $shadow-lg: 0 10px 15px -3px $color-shadow;
 
 // Typography
 // Font Families, Weights, and Sizes, Line Heights, and Spacing, 
@@ -165,8 +139,6 @@ $layout-margin: $space-lg;         // 32px
 
 // Navigation variables
 $nav-height: 5rem;
-$nav-bg: $color-background-secondary;
-$nav-text-color: $color-text-primary;
-$nav-hover-color: $color-link;
+
 $transition-speed: 0.3s;
 $dropdown-z-index: 1000;

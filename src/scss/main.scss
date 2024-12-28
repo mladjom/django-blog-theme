@@ -5,7 +5,7 @@
 @use 'abstracts/utilities';
 
 // Base
-@use 'base/root';
+//@use 'base/root';
 @use 'base/reset';
 @use 'base/typography';
 @use 'base/generic';
@@ -27,8 +27,15 @@
 @use 'pages/about';
 
 // Themes
+// main.scss
+@use 'themes/default';
 @use 'themes/light';
-@use 'themes/dark';  
+@use 'themes/dark';
+@use 'themes/blue-light';
+@use 'themes/blue-dark';
+@use 'themes/red-light';
+@use 'themes/red-dark';
+
 
 // Vendors
 @use 'vendors/third-party';
