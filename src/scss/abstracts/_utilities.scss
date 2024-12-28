@@ -1,3 +1,42 @@
-@use "../abstracts/variables" as *;
-@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as vars;
+@use "../abstracts/mixins" as mixin ;
+@use "sass:map";
 
+.responsive-section-padding {
+    @include mixin.responsive-section-padding('lg');
+    //@include mixin.responsive-section-padding('lg');
+  }
+  
+  // Content sections
+  .section-padding {
+  
+    @include mixin.section-padding;
+    &--md {
+      @include mixin.section-padding('md');
+    }
+    
+    &--lg {
+      @include mixin.section-padding('lg');
+    }
+  }
+  
+  
+  
+  // Fixed stack example
+  .stack {
+    @include mixin.stack(2rem);
+    //margin-bottom: 2rem;
+  }
+  
+  // Example usage with different spacings at different breakpoints
+  .responsive-stack {
+    // Start with xs spacing, then increase at each breakpoint
+    @include mixin.responsive-stack(
+      map.get(vars.$spacing, 'xs'),  // Default/mobile spacing
+      (
+        'sm': map.get(vars.$spacing, 'sm'),
+        'md': map.get(vars.$spacing, 'lg'),
+        'lg': map.get(vars.$spacing, 'xl'),
+      )
+    );
+  }
