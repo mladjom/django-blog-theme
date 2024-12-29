@@ -30,4 +30,24 @@
   --color-disabled-background: var(--color-neutral-200);
   --color-disabled-text: var(--color-neutral-500);
   --color-disabled-border: var(--color-neutral-300);
+
+  // Font sizes
+  @each $name, $size in vars.$font-sizes {
+    --font-size-#{$name}: #{$size};
+  }
+
+  // Line heights
+  @each $name, $height in vars.$line-heights {
+    --line-height-#{$name}: #{$height};
+  }
+
+  // Font weights
+  @each $name, $weight in vars.$font-weights {
+    --font-weight-#{$name}: #{$weight};
+  }
+
+  // Letter spacing
+  @each $name, $spacing in vars.$letter-spacing {
+    --letter-spacing-#{$name}: #{$spacing};
+  }
 }

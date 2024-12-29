@@ -1,4 +1,5 @@
 // components/_article-grid.scss
+@use "../layout/grid";
 @use "../abstracts/mixins" as mixin;
 @use "../abstracts/variables" as vars;
 @use "sass:map";
