@@ -1,5 +1,15 @@
-// abstracts/_variables.scss
-@use 'sass:map';
+// abstracts/tokens/_typography.scss
+
+// Font Families
+$font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+$font-family-heading: 'Plus Jakarta Sans', $font-family-base;
+
+// Font Families Configuration
+$font-families: (
+  'base': $font-family-base,
+  'headings': $font-family-heading,
+  'mono': ('JetBrains Mono', 'Cascadia Code', Menlo, Monaco, Consolas, monospace),
+);
 
 // Base size for relative units (16px browser default)
 $base-size: 1rem;

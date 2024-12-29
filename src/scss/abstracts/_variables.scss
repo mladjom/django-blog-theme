@@ -1,6 +1,7 @@
 @use 'sass:math';
 @forward 'tokens/colors';
 @forward 'tokens/typography';
+@forward 'tokens/spacing';
 
 // Border Radius
 $border-radius: (
@@ -15,39 +16,6 @@ $border-radius: (
 // Typography
 // Font Families, Weights, and Sizes, Line Heights, and Spacing, 
 //
-// Font Families
-$font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
-$font-family-heading: 'Plus Jakarta Sans', $font-family-base;
-
-// Font Sizes (using 16px base)
-$font-size-base: 1rem;
-$font-size-scale: 1.25; // Major third scale
-
-// Font sizes using the scale
-$font-size-sm: math.div($font-size-base, $font-size-scale); // 12.8px (0.8rem)
-$font-size-lg: math.div($font-size-base * $font-size-scale, 1); // 20px (1.25rem)
-$h6: $font-size-lg;  // 20px (1.25rem)
-$h5: math.div($h6 * $font-size-scale, 1);  // 25px (1.5625rem)
-$h4: math.div($h5 * $font-size-scale, 1);  // 31.25px (1.953125rem)
-$h3: math.div($h4 * $font-size-scale, 1);  // 39.06px (2.44125rem)
-$h2: math.div($h3 * $font-size-scale, 1);  // 48.83px (3.052125rem)
-$h1: math.div($h2 * $font-size-scale, 1);  // 61.04px (3.81475rem)
-
-// Line Heights
-$line-height-tight: 1.2;
-$line-height-base: 1.5;
-$line-height-loose: 1.7;
-
-// Font Weights
-$font-weight-regular: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-
-// Letter Spacing
-$letter-spacing-tight: -0.02em;
-$letter-spacing-base: 0;
-$letter-spacing-loose: 0.02em;
 
 // Base spacing unit (based on typography)
 $space-unit: 1rem; // 16px

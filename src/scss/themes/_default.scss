@@ -12,7 +12,7 @@
     --color-#{$key}: #{$value};
   }
 
-  // Base semantic colors (will be overridden by themes)
+
   --color-text-primary: var(--color-neutral-900);
   --color-text-secondary: var(--color-neutral-600);
   --color-text-tertiary: var(--color-neutral-500);
@@ -21,33 +21,14 @@
   --color-background-secondary: var(--color-neutral-200);
   --color-background-tertiary: var(--color-neutral-300);
   
-  --color-border-light: var(--color-neutral-300);
-  --color-border-default: var(--color-neutral-400);
-  --color-border-dark: var(--color-neutral-500);
+  // --color-border-light: var(--color-neutral-300);
+  // --color-border-default: var(--color-neutral-400);
+  // --color-border-dark: var(--color-neutral-500);
   
-  --color-shadow: #{rgba(33, 37, 41, 0.1)};
+  // --color-shadow: #{rgba(33, 37, 41, 0.1)};
   
-  --color-disabled-background: var(--color-neutral-200);
-  --color-disabled-text: var(--color-neutral-500);
-  --color-disabled-border: var(--color-neutral-300);
+  // --color-disabled-background: var(--color-neutral-200);
+  // --color-disabled-text: var(--color-neutral-500);
+  // --color-disabled-border: var(--color-neutral-300);
 
-  // Font sizes
-  @each $name, $size in vars.$font-sizes {
-    --font-size-#{$name}: #{$size};
-  }
-
-  // Line heights
-  @each $name, $height in vars.$line-heights {
-    --line-height-#{$name}: #{$height};
-  }
-
-  // Font weights
-  @each $name, $weight in vars.$font-weights {
-    --font-weight-#{$name}: #{$weight};
-  }
-
-  // Letter spacing
-  @each $name, $spacing in vars.$letter-spacing {
-    --letter-spacing-#{$name}: #{$spacing};
-  }
 }

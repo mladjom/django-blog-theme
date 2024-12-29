@@ -1,34 +1,29 @@
-@use "../abstracts/mixins" as mixin ;
-@use "../abstracts/variables" as vars;
-@use "../abstracts/functions" as func;
+// base/_typography.scss
+@use "../abstracts/mixins" as * ;
+@use "../abstracts/variables" as *;
 @use 'sass:map';
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-// Base styles for the body
 body {
-  font-family: vars.$font-family-base;
-  font-size: vars.$font-size-base;
-  line-height: vars.$line-height-base;
-  font-weight: vars.$font-weight-regular;
+  @include text-style();
   color: var(--color-text-primary);
-  background-color: var(--color--background-primary); 
+  background-color: var(--color-background-primary);
 }
 
-// Headings base styles
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  @include mixin.heading-base;
-  color: var(--color-text-primary);
+@each $level in (1, 2, 3, 4, 5, 6) {
+  h#{$level} {
+    @include heading($level);
+  }
 }
 
-// Individual heading styles with fluid typography
-h1, .h1 { @include mixin.fluid-type(vars.$h1);} 
-h2, .h2 { @include mixin.fluid-type(vars.$h2);}   
-h3, .h3 { @include mixin.fluid-type(vars.$h3);}
-h4, .h4 { @include mixin.fluid-type(vars.$h4);}
-h5, .h5 { @include mixin.fluid-type(vars.$h5);}
-h6, .h6 { @include mixin.fluid-type(vars.$h6);}
+code {
+  @include text-style('sm', 'normal', 'base', 'normal', 'mono');
+}
+
+small {
+  @include text-style('xs', 'normal', 'base');
+}
+
 
 // Paragraph styles
 p {
@@ -71,7 +66,7 @@ blockquote {
 }
 
 // Meta text elements
-small, .text-small {
+small {
   font-size: vars.$font-size-sm;
   color: var(--color--text-tertiary);
 }
@@ -82,64 +77,3 @@ small, .text-small {
   color: var(--color--primary);
 }
 
-
-
-
-
-// Article specific styles
-.article {
-  h1 {
-    color: var(--color-text-primary);
-    
-    + .article-meta {
-      color: var(--color-text-tertiary);
-      margin-bottom: 2em;
-    }
-  }
-  
-  // Article links
-  .content a:not([class]) {
-    color: var(--color-text-primary);
-    text-decoration-color: var(--color--primary);
-    
-    &:hover {
-      color: var(--color-link-hover);
-    }
-  }
-}
-
-// Article typography spacing
-.article {
-  @include mixin.stack(10rem);
-  
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: vars.$space-xl;
-    margin-bottom: vars.$space-xs;
-  }
-  
-  p {
-    margin-bottom: vars.$space-md;
-  }
-  
-  ul, ol {
-    margin: vars.$space-md 0;
-    padding-left: vars.$space-lg;
-    
-    li + li {
-      margin-top: vars.$space-xs;
-    }
-  }
-  
-  blockquote {
-    margin: vars.$space-lg 0;
-    padding: vars.$space-md vars.$space-lg;
-  }
-}
-
-
-// Responsive Adjustments
-// @include respond-to(sm) {
-//   h1 { font-size: $h2; margin-bottom: map.get($spacing-scale, sm); }
-//   h2 { font-size: $h3; }
-//   p { font-size: $font-size-sm; margin-bottom: map.get($spacing-scale, sm); }
-// }

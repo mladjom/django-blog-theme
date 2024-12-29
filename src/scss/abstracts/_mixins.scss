@@ -3,6 +3,7 @@
 @use 'sass:map';
 @use "sass:math";
 @use "sass:color";
+@forward 'typography';
 
 /*------------------------------------*\
     #MIXINS
@@ -87,11 +88,7 @@
   }
 }
 
-@mixin fluid-type($max-size) {
-  $scale-factor: 1.25; // Major third scale factor
-  $min-size: math.div($max-size, $scale-factor); // Scale down the max size by the factor
-  font-size: clamp(#{$min-size}, 5vw, #{$max-size});
-}
+
 
 @mixin aspect-ratio($width, $height) {
   aspect-ratio: calc($width / $height);
@@ -105,15 +102,7 @@
   object-fit: cover;
 }
 
-// Heading styles
-@mixin heading-base {
-  font-family: vars.$font-family-heading;
-  font-weight: vars.$font-weight-bold;
-  line-height: vars.$line-height-tight;
-  letter-spacing: vars.$letter-spacing-tight;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-}
+
 
 // Flex Center
 @mixin flex-center {
