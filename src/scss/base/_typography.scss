@@ -1,9 +1,11 @@
 // base/_typography.scss
-@use "../abstracts/mixins" as * ;
+@use "../abstracts/mixins" as *;
 @use "../abstracts/variables" as *;
-@use 'sass:map';
+@use "sass:map";
 
-
+.flow {
+  @include flow-spacing;
+}
 body {
   @include text-style();
   color: var(--color-text-primary);
@@ -13,26 +15,32 @@ body {
 @each $level in (1, 2, 3, 4, 5, 6) {
   h#{$level} {
     @include heading($level);
+    margin-top: map.get($spacing, "6");
+    margin-bottom: map.get($spacing, "4");
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 
 code {
-  @include text-style('sm', 'normal', 'base', 'normal', 'mono');
+  @include text-style("sm", "normal", "base", "normal", "mono");
 }
 
 small {
-  @include text-style('xs', 'normal', 'base');
+  @include text-style("xs", "normal", "base");
+  color: var(--color--text-tertiary);
 }
-
 
 // Paragraph styles
 p {
-  margin-bottom: 1.5em;
+  margin-bottom: map.get($spacing, "4");
   max-width: 70ch;
-  
-  &.lead {
-    font-size: vars.$font-size-lg;
-    color:  var(--color-text-secondary);
+  color: var(--color-text-secondary);
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -42,19 +50,45 @@ a {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
   transition: all 0.2s ease;
-  
+
   &:hover {
     color: var(--color-link-hover);
     text-decoration-thickness: 2px;
   }
 }
 
-// List styles
-ul, ol {
-  padding-left: 1.5em;
-  margin-bottom: 1.5em;
-  color: var(--color-text-primary);
+// Groups
+* + h2 {
+  margin-top: map.get($spacing, '8');
 }
+
+* + h3, 
+* + h4, 
+* + h5, 
+* + h6 {
+  margin-top: map.get($spacing, '6');
+}
+
+// Lists maintain rhythm
+ul, ol {
+  margin-top: map.get($spacing, '4');
+  margin-bottom: map.get($spacing, '4');
+  padding-left: map.get($spacing, '5');
+  
+  li + li {
+    margin-top: map.get($spacing, '2');
+  }
+}
+
+// Maintain rhythm in nested lists
+ul ul, 
+ul ol, 
+ol ul, 
+ol ol {
+  margin-top: map.get($spacing, '2');
+  margin-bottom: 0;
+}
+
 
 // Blockquote styles
 blockquote {
@@ -65,15 +99,8 @@ blockquote {
   color: var(--color--text-secondary);
 }
 
-// Meta text elements
-small {
-  font-size: vars.$font-size-sm;
-  color: var(--color--text-tertiary);
-}
-
 // Selection styles
 ::selection {
   background-color: rgba(var(--color--primary, 0.1));
   color: var(--color--primary);
 }
-

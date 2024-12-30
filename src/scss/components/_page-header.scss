@@ -1,0 +1,25 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:map';
+
+.page-header {
+    padding: map.get($spacing, '8') 0;
+    background-color: var(--color-background-secondary);
+  
+    &__intro {
+      max-width: 38rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+  
+    &__title {
+      @include text-style('3xl', 'bold', 'tight', 'tight', 'headings');
+      color: var(--color-text-primary);
+      margin-bottom: map.get($spacing, '4');
+    }
+  
+    &__description {
+      @include text-style('lg', 'normal', 'relaxed');
+      color: var(--color-text-secondary);
+    }
+  }

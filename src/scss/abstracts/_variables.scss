@@ -4,73 +4,44 @@
 @forward 'tokens/spacing';
 
 // Border Radius
-$border-radius: (
-  'md': 4px,
-  'lg': 8px
-);
+// $border-radius: (
+//   'md': 4px,
+//   'lg': 8px
+// );
 
-// $shadow-sm: 0 1px 2px 0 $color-shadow;
-// $shadow-md: 0 4px 6px -1px $color-shadow;
-// $shadow-lg: 0 10px 15px -3px $color-shadow;
-
-// Typography
-// Font Families, Weights, and Sizes, Line Heights, and Spacing, 
-//
-
-// Base spacing unit (based on typography)
-$space-unit: 1rem; // 16px
-
-// Spacing scale
-$space-3xs: calc($space-unit * 0.25);  // 4px
-$space-2xs: calc($space-unit * 0.5);   // 8px
-$space-xs: calc($space-unit * 0.75);   // 12px
-$space-sm: $space-unit;                // 16px
-$space-md: calc($space-unit * 1.5);    // 24px
-$space-lg: calc($space-unit * 2);      // 32px
-$space-xl: calc($space-unit * 3);      // 48px
-$space-2xl: calc($space-unit * 4);     // 64px
-$space-3xl: calc($space-unit * 6);     // 96px
-
-// Common spacing map (for consistent use)
-$spacing: (
-  '3xs': $space-3xs,
-  '2xs': $space-2xs,
-  'xs': $space-xs,
-  'sm': $space-sm,
-  'md': $space-md,
-  'lg': $space-lg,
-  'xl': $space-xl,
-  '2xl': $space-2xl,
-  '3xl': $space-3xl 
-);
-
-// Breakpoints Map
-$breakpoints: (
-  'sm': 36em,  // 576px
-  'md': 48em,  // 768px
-  'lg': 62em,  // 992px
-  'xl': 75em,  // 1200px
-  '2xl': 87.5em // 1400px
-);
-
-// Section spacing
-$section-spacing-sm: $space-sm;    // 16px
-$section-spacing-md: $space-lg;   // 64px
-$section-spacing-lg: $space-xl;   // 96px
-
-// Component specific spacing
-$component-padding: $space-md;     // 24px
-$component-gap: $space-sm;         // 16px
-$component-margin: $space-lg;      // 32px
-
-// Layout spacing
-$layout-gutter: $space-md;         // 24px
-$layout-margin: $space-lg;         // 32px
+// // $shadow-sm: 0 1px 2px 0 $color-shadow;
+// // $shadow-md: 0 4px 6px -1px $color-shadow;
+// // $shadow-lg: 0 10px 15px -3px $color-shadow;
 
 
 
-// Navigation variables
-$nav-height: 5rem;
+// // Breakpoints Map
+// $breakpoints: (
+//   'sm': 36em,  // 576px
+//   'md': 48em,  // 768px
+//   'lg': 62em,  // 992px
+//   'xl': 75em,  // 1200px
+//   '2xl': 87.5em // 1400px
+// );
 
-$transition-speed: 0.3s;
-$dropdown-z-index: 1000;
+// // Section spacing
+// $section-spacing-sm: $space-sm;    // 16px
+// $section-spacing-md: $space-lg;   // 64px
+// $section-spacing-lg: $space-xl;   // 96px
+
+// // Component specific spacing
+// $component-padding: $space-md;     // 24px
+// $component-gap: $space-sm;         // 16px
+// $component-margin: $space-lg;      // 32px
+
+// // Layout spacing
+// $layout-gutter: $space-md;         // 24px
+// $layout-margin: $space-lg;         // 32px
+
+
+
+// // Navigation variables
+// $nav-height: 5rem;
+
+// $transition-speed: 0.3s;
+// $dropdown-z-index: 1000;

@@ -1,6 +1,6 @@
 // abstracts/mixins/_typography.scss
 @use 'sass:map';
-@use '../abstracts/variables' as *;
+@use '../variables' as *;
 
 @mixin font-family($family) {
     font-family: map.get($font-families, $family);
