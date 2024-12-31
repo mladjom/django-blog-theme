@@ -1,67 +1,57 @@
+@use 'sass:map';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  margin: map.get($spacing, '6') 0;
 
-  .page-item {
-    margin: 0 0.25rem;
-    font-size: 1rem;
+  &__list {
+    @include flex-center;
+    gap: map.get($spacing, '2');
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-    &.disabled {
+  &__item {
+    &--disabled {
+      opacity: 0.5;
       pointer-events: none;
     }
 
-    &.active {
-      .page-link {
-        background-color: var(--color-primary);
-        color: var(--color-background-primary);
-        border-color: var(--color-primary);
-        font-weight: bold;
+    &--ellipsis {
+      color: var(--color-text-tertiary);
+    }
+
+    &--current {
+      .pagination__link {
+        background-color: var(--color-link);
+        color: var(--color-neutral-100);
+        border-color: var(--color-link);
       }
     }
   }
 
-  .page-link {
-    display: block;
-    padding: 0.5rem 1rem;
+  &__link {
+    @include text-style('sm', 'medium');
+    min-width: map.get($spacing, '6');
+    height: map.get($spacing, '6');
+    padding: 0 map.get($spacing, '3');
+    border: 1px solid var(--color-neutral-300);
+    border-radius: map.get($spacing, '1');
+    @include flex-center;
     color: var(--color-text-primary);
-    background-color: var(--color-background-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: 0.375rem;
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.2s ease;
 
-    &:hover,
-    &:focus {
-      background-color: var(--color-primary);
-      color: var(--color-background-primary);
+    &:hover:not([aria-disabled="true"]) {
+      background-color: var(--color-neutral-200);
+      border-color: var(--color-neutral-400);
     }
 
-    &[aria-disabled="true"] {
-      background-color: var(--color-background-secondary);
-      color: var(--color-text-secondary);
-      border-color: var(--color-border);
-      cursor: not-allowed;
+    &--prev,
+    &--next {
+      padding: 0 map.get($spacing, '4');
     }
-
-    &[aria-label] {
-      text-decoration: none;
-    }
-  }
-
-  .page-item.disabled .page-link {
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-secondary);
-    border-color: var(--color-border);
-    cursor: not-allowed;
-  }
-
-  .page-item span.page-link {
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-secondary);
-    border-color: var(--color-border);
   }
 }

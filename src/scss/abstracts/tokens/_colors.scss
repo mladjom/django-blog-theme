@@ -1,3 +1,4 @@
+// abstracts/tokens/_colors.scss
 $themes: ("light", "dark", "blue-light", "blue-dark", "red-light", "red-dark");
 
 $colors-neutral: (
@@ -18,15 +19,16 @@ $colors-blue: (
   dark: #0099c4
 );
 
-$colors-red: (
-  primary: #e34449,
-  light: #e86368,
-  dark: #d92d32
-);
-
 $colors-utility: (
   success: #28a745,
   warning: #ffc107,
   error: #dc3545,
   info: #17a2b8
+);
+
+
+$colors-red: (
+  primary: #e34449,
+  light: #e86368,
+  dark: #d92d32
 );

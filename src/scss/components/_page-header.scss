@@ -7,15 +7,15 @@
     background-color: var(--color-background-secondary);
   
     &__intro {
-      max-width: 38rem;
+      @include flex-column;
+      gap: map.get($spacing, '4');
+      max-width: 65ch;
       margin: 0 auto;
       text-align: center;
     }
   
     &__title {
-      @include text-style('3xl', 'bold', 'tight', 'tight', 'headings');
-      color: var(--color-text-primary);
-      margin-bottom: map.get($spacing, '4');
+      margin: 0
     }
   
     &__description {

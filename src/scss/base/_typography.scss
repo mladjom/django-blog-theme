@@ -76,7 +76,7 @@ ul, ol {
   padding-left: map.get($spacing, '5');
   
   li + li {
-    margin-top: map.get($spacing, '2');
+    //margin-top: map.get($spacing, '2');
   }
 }
 

@@ -3,45 +3,45 @@
 @use 'sass:map';
  
 .site-footer {
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-secondary);
-    padding: map.get($spacing, '6') 0;
-  
-    &__nav {
-      text-align: center;
-      margin-bottom: map.get($spacing, '4');
-    }
-  
-    &__nav-list {
-      @include flex-row(center, center, map.get($spacing, '4'));
+  padding: map.get($spacing, '8') 0;
+  border-top: 1px solid var(--color-neutral-300);
+  background-color: var(--color-background-secondary);
+
+  .container {
+    @include flex-column;
+    align-items: center;
+  }
+  &__nav {
+    margin-bottom: map.get($spacing, '6');
+
+    &-list {
+      @include flex-center;
+      gap: map.get($spacing, '4');
       list-style: none;
       padding: 0;
       margin: 0;
-    }
-  
-    &__nav-item {
-      margin: 0;
-    }
-  
-    &__nav-link {
-      @include text-style('sm', 'medium');
-      color: var(--color-text-primary);
-      text-decoration: none;
-      transition: color 0.2s;
-  
-      &:hover,
-      &:focus {
-        color: var(--color-primary);
+
+      @include respond-to('md') {
+        gap: map.get($spacing, '6');
       }
     }
-  
-    &__credits {
-      text-align: center;
-  
-      p {
-        @include text-style('xs', 'normal');
-        color: var(--color-text-secondary);
+
+    &-link {
+      @include text-style('sm');
+      color: var(--color-text-secondary);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-link);
       }
     }
   }
+
+  &__credits {
+    text-align: center;
+    @include text-style('sm');
+    color: var(--color-text-tertiary);
+  }
+}
+
   
