@@ -1,0 +1,25 @@
+// components/_alerts.scss
+@use '../abstracts/tokens/spacing' as *;
+@use '../abstracts/tokens/alerts' as *;
+@use '../abstracts/mixins/alerts' as *;
+@use '../abstracts/mixins/typography' as *;
+@use "sass:map";
+
+.alert {
+    @include alert-base;
+    
+    &--info { @include alert-variant('info'); }
+    &--success { @include alert-variant('success'); }
+    &--warning { @include alert-variant('warning'); }
+    &--error { @include alert-variant('error'); }
+    
+    &__title {
+      @include text-style('lg', 'semibold');
+      margin-bottom: map.get($spacing, '2');
+    }
+    
+    &__content {
+      @include text-style('base');
+    }
+  }
+  

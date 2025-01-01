@@ -1,9 +1,7 @@
 @forward 'mixins/typography';
 @forward 'mixins/spacing';
-@forward 'mixins/flex';
-@forward 'mixins/grid';
-@forward 'mixins/breakpoints';
-
+@forward 'mixins/layout';
+@forward 'mixins/buttons';
 
 @mixin aspect-ratio($width, $height) {
   aspect-ratio: calc($width / $height);

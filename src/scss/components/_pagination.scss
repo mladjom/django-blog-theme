@@ -1,9 +1,9 @@
-@use 'sass:map';
-@use '../abstracts/variables' as *;
+@use "../abstracts/tokens/spacing" as *;
 @use '../abstracts/mixins' as *;
+@use 'sass:map';
 
 .pagination {
-  margin: map.get($spacing, '6') 0;
+  margin: map.get($spacing, '6') 0 map.get($spacing, '8') 0;
 
   &__list {
     @include flex-center;

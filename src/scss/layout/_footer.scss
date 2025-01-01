@@ -1,4 +1,4 @@
-@use '../abstracts/variables' as *;
+@use "../abstracts/tokens/spacing" as *;
 @use '../abstracts/mixins' as *;
 @use 'sass:map';
  
@@ -16,7 +16,7 @@
 
     &-list {
       @include flex-center;
-      gap: map.get($spacing, '4');
+      gap: map.get($spacing, '2');
       list-style: none;
       padding: 0;
       margin: 0;
