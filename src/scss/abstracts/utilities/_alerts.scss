@@ -1,8 +1,8 @@
 // components/_alerts.scss
-@use '../abstracts/tokens/spacing' as *;
-@use '../abstracts/tokens/alerts' as *;
-@use '../abstracts/mixins/alerts' as *;
-@use '../abstracts/mixins/typography' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/alerts' as *;
+@use '../mixins/alerts' as *;
+@use '../mixins/typography' as *;
 @use "sass:map";
 
 .alert {

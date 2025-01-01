@@ -2,7 +2,7 @@
 @use 'abstracts/variables';
 @use 'abstracts/mixins';
 @use 'abstracts/functions';
-//@use 'abstracts/utilities';
+@use 'abstracts/utilities';
 
 // Base
 @use 'base/reset';
@@ -12,16 +12,17 @@
 // Layout
 @use 'layout/header';
 @use 'layout/footer';
-@use 'layout/utilities';
+//@use 'layout/utilities';
+@use 'layout/section-header';
 
 // Components
-@use 'components/page-header';
 @use 'components/content-grid';
+@use 'components/article';
 @use 'components/article-card';
 @use 'components/pagination';
 // @use 'components/item_card';
-@use 'components/buttons';
-@use 'components/alerts';
+//@use 'components/buttons';
+//@use 'components/alerts';
 @use 'components/forms';
 
 
@@ -29,7 +30,7 @@
 // Pages
 @use 'pages/home';
 @use 'pages/about';
-@use 'pages/article-detail';
+//@use 'pages/article-detail';
 //@use 'pages/category';
 
 // Themes

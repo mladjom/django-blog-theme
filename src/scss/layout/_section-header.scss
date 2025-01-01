@@ -2,7 +2,7 @@
 @use '../abstracts/mixins' as *;
 @use 'sass:map';
 
-.page-header {
+.section-header {
     padding: map.get($spacing, '8') 0;
     background-color: var(--color-background-secondary);
   
@@ -15,11 +15,17 @@
     }
   
     &__title {
-      margin: 0
+      margin: 0;
+      @include text-style('3xl', 'bold', 'tight');
     }
   
     &__description {
       @include text-style('lg', 'normal', 'relaxed');
       color: var(--color-text-secondary);
     }
+  
+    &--article {
+      background-color: var(--color-background-primary);
+    }
   }
+  

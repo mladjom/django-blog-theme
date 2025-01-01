@@ -1,4 +1,4 @@
-@use '../abstracts/mixins/buttons' as *;
+@use '../mixins/buttons' as *;
 
 .btn {
     @include button-base;
